@@ -3,7 +3,7 @@ FROM ubuntu:20.04@sha256:a06ae92523384c2cd182dcfe7f8b2bf09075062e937d5653d7d0db0
 ## get rust build environment ready
 FROM rust:1.66.1-buster@sha256:e518dbab65069f4869f0159a460a989161ed277913c03427ed8b84542b771f7e AS rust-base
 
-WORKDIR /aptos
+WORKDIR /creditchain
 
 # Ensure all build dependencies are present
 RUN apt-get update && apt-get install -y cmake curl clang git pkg-config libssl-dev libpq-dev lld libudev-dev
@@ -11,22 +11,22 @@ RUN apt-get update && apt-get install -y cmake curl clang git pkg-config libssl-
 ### Build Rust code ###
 FROM rust-base as builder
 
-ARG GIT_REPO=https://github.com/libra2org/libra2-core.git
+ARG GIT_REPO=https://github.com/creditchainorg/creditchain.git
 ARG GIT_REF
 
 RUN git clone $GIT_REPO ./ && git reset $GIT_REF --hard
-RUN --mount=type=cache,target=/aptos/target --mount=type=cache,target=$CARGO_HOME/registry \
+RUN --mount=type=cache,target=/creditchain/target --mount=type=cache,target=$CARGO_HOME/registry \
   cargo build --release \
-  -p libra2-rosetta \
+  -p creditchain-rosetta \
   && mkdir dist \
-  && cp target/release/libra2-rosetta dist/libra2-rosetta
+  && cp target/release/creditchain-rosetta dist/creditchain-rosetta
 
-### Create image with libra2-node and libra2-rosetta ###
+### Create image with creditchain-node and creditchain-rosetta ###
 FROM ubuntu-base AS rosetta
 
 RUN apt-get update && apt-get install -y libssl-dev ca-certificates && apt-get clean && rm -r /var/lib/lbt/lists/*
 
-COPY --from=builder /aptos/dist/libra2-rosetta /usr/local/bin/libra2-rosetta
+COPY --from=builder /creditchain/dist/creditchain-rosetta /usr/local/bin/creditchain-rosetta
 
 # Rosetta API
 EXPOSE 8082
@@ -34,7 +34,7 @@ EXPOSE 8082
 # Capture backtrace on error
 ENV RUST_BACKTRACE 1
 
-WORKDIR /opt/libra2/data
+WORKDIR /opt/creditchain/data
 
-ENTRYPOINT ["/usr/local/bin/libra2-rosetta"]
-CMD ["online", "--config /opt/libra2/fullnode.yaml"]
+ENTRYPOINT ["/usr/local/bin/creditchain-rosetta"]
+CMD ["online", "--config /opt/creditchain/fullnode.yaml"]

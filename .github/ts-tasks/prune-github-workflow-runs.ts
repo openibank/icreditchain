@@ -7,9 +7,6 @@ import * as url from "url";
 
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
-const owner = "libra2org";
-const repo = "creditchain";
-
 export async function pruneGithubWorkflowRuns() {
   const githubToken = process.env.GITHUB_TOKEN;
 
@@ -18,11 +15,12 @@ export async function pruneGithubWorkflowRuns() {
   }
 
   const ghClient = github.getOctokit(githubToken);
+  const { owner, repo } = github.context.repo;
 
   const repoRootWithDotGit = findRepoRoot(__dirname);
   const repoRoot = repoRootWithDotGit.substring(0, repoRootWithDotGit.length - 4); // remove the `.git` suffix from the returned path
 
-  const patterns = [`${repoRoot}/.github/worklows/*.yml`, `${repoRoot}/.github/workflows/*.yaml`];
+  const patterns = [`${repoRoot}/.github/workflows/*.yml`, `${repoRoot}/.github/workflows/*.yaml`];
   const globber = await glob.create(patterns.join("\n"));
   const workflowFilePaths = await globber.glob();
   const workflowFilesPresentInRepo = workflowFilePaths.map((filePath) => path.basename(filePath));

@@ -4,11 +4,11 @@
 
 CreditChain blockchain automated genesis ceremony for testnets
 
-**Homepage:** <https://github.com/ibankio/creditchain>
+**Homepage:** <https://github.com/creditchainorg/creditchain>
 
 ## Source Code
 
-* <https://github.com/ibankio/creditchain>
+* <https://github.com/creditchainorg/creditchain>
 
 ## Values
 
@@ -39,9 +39,9 @@ CreditChain blockchain automated genesis ceremony for testnets
 | genesis.fullnode.internal_host_suffix | string | `"fullnode-lb"` | If `enable_onchain_discovery` is false, use this host suffix for internal kubernetes service name |
 | genesis.genesis_blob_upload_url | string | `"https://us-west1-creditchain-forge-gcp-0.cloudfunctions.net/signed-url"` |  |
 | genesis.image.pullPolicy | string | `"IfNotPresent"` | Image pull policy to use for tools image |
-| genesis.image.repo | string | `"aptoslabs/tools"` | Image repo to use for tools image for running genesis |
+| genesis.image.repo | string | `"creditchainorg/tools"` | Image repo to use for tools image for running genesis |
 | genesis.image.tag | string | `nil` | Image tag to use for tools image. If set, overrides `imageTag` |
-| genesis.moveModulesDir | string | `"/creditchain-framework/move/modules"` | The local path for move modules in the docker image. Defaults to the creditchain-framework in the aptoslabs/tools docker image |
+| genesis.moveModulesDir | string | `"/creditchain-framework/move/modules"` | The local path for move modules in the docker image. Defaults to the creditchain-framework in the creditchainorg/tools docker image |
 | genesis.multicluster | object | `{"domain_suffixes":"","enabled":false}` | Options for multicluster mode. This is *experimental only* |
 | genesis.numValidators | int | `1` | Number of validators to include in genesis |
 | genesis.username_prefix | string | `"creditchain-node"` | If `enable_onchain_discovery` is false, use this kubernetes service name prefix. It should be the fullname for the creditchain-node helm release |

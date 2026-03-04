@@ -4,11 +4,11 @@
 
 CreditChain blockchain node deployment
 
-**Homepage:** <https://github.com/ibankio/creditchain>
+**Homepage:** <https://github.com/creditchainorg/creditchain>
 
 ## Source Code
 
-* <https://github.com/ibankio/creditchain>
+* <https://github.com/creditchainorg/creditchain>
 
 ## Values
 
@@ -20,7 +20,7 @@ CreditChain blockchain node deployment
 | cluster_name | string | `"unknown"` |  |
 | enablePrivilegedMode | bool | `false` | TEST ONLY: Enable running as root for profiling |
 | fullnode.affinity | object | `{}` |  |
-| fullnode.config | object | `{"full_node_networks":[{"network_id":"public"}]}` | Fullnode configuration. See NodeConfig https://github.com/ibankio/creditchain/blob/main/config/src/config/mod.rs |
+| fullnode.config | object | `{"full_node_networks":[{"network_id":"public"}]}` | Fullnode configuration. See NodeConfig https://github.com/creditchainorg/creditchain/blob/main/config/src/config/mod.rs |
 | fullnode.force_enable_telemetry | bool | `false` | Flag to force enable telemetry service (useful for forge tests) |
 | fullnode.groups | list | `[{"dns_name":"vfn","name":"fullnode","replicas":1}]` | Specify fullnode groups by `name` and number of `replicas` |
 | fullnode.nodeSelector | object | `{}` |  |
@@ -82,11 +82,11 @@ CreditChain blockchain node deployment
 | serviceAccount.create | bool | `true` | Specifies whether a service account should be created |
 | serviceAccount.name | string | `nil` | The name of the service account to use. If not set and create is true, a name is generated using the fullname template |
 | validator.affinity | object | `{}` |  |
-| validator.config | object | `{}` | Validator configuration. See NodeConfig https://github.com/ibankio/creditchain/blob/main/config/src/config/mod.rs |
+| validator.config | object | `{}` | Validator configuration. See NodeConfig https://github.com/creditchainorg/creditchain/blob/main/config/src/config/mod.rs |
 | validator.enableNetworkPolicy | bool | `false` | Lock down network ingress and egress with Kubernetes NetworkPolicy |
 | validator.force_enable_telemetry | bool | `false` | Flag to force enable telemetry service (useful for forge tests) |
 | validator.image.pullPolicy | string | `"IfNotPresent"` | Image pull policy to use for validator images |
-| validator.image.repo | string | `"aptoslabs/validator"` | Image repo to use for validator images |
+| validator.image.repo | string | `"creditchainorg/validator"` | Image repo to use for validator images |
 | validator.image.tag | string | `nil` | Image tag to use for validator images. If set, overrides `imageTag` |
 | validator.name | string | `nil` | Internal: name of your validator for use in labels |
 | validator.nodeSelector | object | `{}` |  |

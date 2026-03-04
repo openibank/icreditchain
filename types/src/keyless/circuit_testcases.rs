@@ -201,7 +201,7 @@ pub(crate) static SAMPLE_PROOF_NO_EXTRA_FIELD: Lazy<Groth16Proof> = Lazy::new(||
     )
 });
 
-/// A new Groth16 VK to test the VK rotation.  Using https://github.com/libra2org/devnet-groth16-keys/refs/heads/master/verification_key.json
+/// A new Groth16 VK to test the VK rotation. Sourced from the devnet Groth16 keys repository.
 pub(crate) static SAMPLE_UPGRADED_VK: Lazy<PreparedVerifyingKey<Bn254>> = Lazy::new(|| {
     let alpha_g1 = g1_projective_str_to_affine(
         "20491192805390485299153009773594534940189261866228447918068658471970481763042",

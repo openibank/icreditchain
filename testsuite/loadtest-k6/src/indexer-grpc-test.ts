@@ -25,7 +25,7 @@ export const options = {
 };
 
 // GetTransactions from raw data stream
-// Inspiration from: https://github.com/libra2org/creditchain-indexer-processors/blob/main/typescript/processors/example-write-set-change-processor/processor.ts
+// Inspiration from: https://github.com/creditchainorg/creditchain-indexer-processors/blob/main/typescript/processors/example-write-set-change-processor/processor.ts
 export default () => {
   if (__ITER == 0) {
     client.connect(GRPC_ADDR, { plaintext: true });

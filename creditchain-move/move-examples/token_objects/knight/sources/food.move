@@ -81,22 +81,22 @@ module knight::food {
             sender,
             string::utf8(b"Corn Token Description"),
             string::utf8(CORN_TOKEN_NAME),
-            string::utf8(b"https://raw.githubusercontent.com/libra2org/libra2-core/main/ecosystem/typescript/sdk/examples/typescript/metadata/knight/Corn"),
+            string::utf8(b"https://raw.githubusercontent.com/ibankio/creditchain/main/ecosystem/typescript/sdk/examples/typescript/metadata/knight/Corn"),
             string::utf8(b"Corn"),
             string::utf8(b"CORN"),
-            string::utf8(b"https://raw.githubusercontent.com/libra2org/libra2-core/main/ecosystem/typescript/sdk/examples/typescript/metadata/knight/Corn.png"),
-            string::utf8(b"https://www.libra2.org"),
+            string::utf8(b"https://raw.githubusercontent.com/ibankio/creditchain/main/ecosystem/typescript/sdk/examples/typescript/metadata/knight/Corn.png"),
+            string::utf8(b"https://www.creditchain.org"),
             5,
         );
         create_food_token_as_fungible_token(
             sender,
             string::utf8(b"Meat Token Description"),
             string::utf8(MEAT_TOKEN_NAME),
-            string::utf8(b"https://raw.githubusercontent.com/libra2org/libra2-core/main/ecosystem/typescript/sdk/examples/typescript/metadata/knight/Meat"),
+            string::utf8(b"https://raw.githubusercontent.com/ibankio/creditchain/main/ecosystem/typescript/sdk/examples/typescript/metadata/knight/Meat"),
             string::utf8(b"Meat"),
             string::utf8(b"MEAT"),
-            string::utf8(b"https://raw.githubusercontent.com/libra2org/libra2-core/main/ecosystem/typescript/sdk/examples/typescript/metadata/knight/Meat.png"),
-            string::utf8(b"https://www.libra2.org"),
+            string::utf8(b"https://raw.githubusercontent.com/ibankio/creditchain/main/ecosystem/typescript/sdk/examples/typescript/metadata/knight/Meat.png"),
+            string::utf8(b"https://www.creditchain.org"),
             20,
         );
     }

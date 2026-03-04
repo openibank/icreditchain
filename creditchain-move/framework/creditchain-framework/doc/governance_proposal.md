@@ -175,4 +175,4 @@ Useful for CreditChainGovernance to create an empty proposal as proof.
 </code></pre>
 
 
-[move-book]: https://docs.libra2.org/move/book/SUMMARY
+[move-book]: https://docs.creditchain.org/move/book/SUMMARY

@@ -19,7 +19,7 @@ impl NetworkTest for ReconfigurationTest {
     async fn run<'a>(&self, _ctx: NetworkContextSynchronizer<'a>) -> Result<()> {
         Err(anyhow!("Not supported in creditchain-framework yet"))
     }
-    // TODO(https://github.com/libra2org/libra2-core/issues/317): add back after support those transactions in creditchain-framework
+    // TODO(https://github.com/ibankio/creditchain/issues/317): add back after support those transactions in creditchain-framework
     //     let rt = Runtime::new()?;
     //
     //     let mut rng = StdRng::from_seed(OsRng.gen());

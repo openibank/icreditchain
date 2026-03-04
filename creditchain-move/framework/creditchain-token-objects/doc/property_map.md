@@ -1279,4 +1279,4 @@ Removes a property from the map, ensuring that it does in fact exist
 </details>
 
 
-[move-book]: https://docs.libra2.org/move/book/SUMMARY
+[move-book]: https://docs.creditchain.org/move/book/SUMMARY

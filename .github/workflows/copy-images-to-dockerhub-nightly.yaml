@@ -14,13 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ibankio/creditchain/.github/actions/check-creditchain@main
+      - uses: ./.github/actions/check-creditchain
         with:
           cancel-workflow: ${{ github.event_name == 'schedule' }} # Cancel the workflow if it is scheduled on a fork
 
   copy-images-to-dockerhub:
     needs: check-repo
-    if: github.repository == 'ibankio/creditchain'
+    if: github.repository == 'creditchainorg/creditchain' || github.repository == 'ibankio/creditchain'
     uses: ./.github/workflows/copy-images-to-dockerhub.yaml
     with:
       image_tag_prefix: nightly

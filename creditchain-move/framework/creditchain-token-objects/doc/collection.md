@@ -1869,4 +1869,4 @@ After changing the collection's name, to create tokens - only call functions tha
 </code></pre>
 
 
-[move-book]: https://docs.libra2.org/move/book/SUMMARY
+[move-book]: https://docs.creditchain.org/move/book/SUMMARY

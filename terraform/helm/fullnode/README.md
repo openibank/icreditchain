@@ -1,4 +1,4 @@
-# aptos-fullnode
+# creditchain-fullnode
 
 ![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
 
@@ -7,7 +7,7 @@
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| creditchain_chains | object | `{"devnet":{"genesis_blob_url":"https://devnet.creditchain.org/genesis.blob","waypoint_txt_url":"https://devnet.creditchain.org/waypoint.txt"},"mainnet":{"genesis_blob_url":"https://github.com/ibankio/creditchain/main/mainnet/genesis.blob","waypoint_txt_url":"https://github.com/ibankio/creditchain/main/mainnet/waypoint.txt"},"testnet":{"genesis_blob_url":"https://github.com/ibankio/creditchain/main/testnet/genesis.blob","waypoint_txt_url":"https://github.com/ibankio/creditchain/main/testnet/genesis_waypoint.txt"}}` | For each supported chain, specify the URLs from which to download the genesis.blob and waypoint.txt |
+| creditchain_chains | object | `{"devnet":{"genesis_blob_url":"https://devnet.creditchain.org/genesis.blob","waypoint_txt_url":"https://devnet.creditchain.org/waypoint.txt"},"mainnet":{"genesis_blob_url":"https://github.com/creditchainorg/creditchain/main/mainnet/genesis.blob","waypoint_txt_url":"https://github.com/creditchainorg/creditchain/main/mainnet/waypoint.txt"},"testnet":{"genesis_blob_url":"https://github.com/creditchainorg/creditchain/main/testnet/genesis.blob","waypoint_txt_url":"https://github.com/creditchainorg/creditchain/main/testnet/genesis_waypoint.txt"}}` | For each supported chain, specify the URLs from which to download the genesis.blob and waypoint.txt |
 | backup.affinity | object | `{}` |  |
 | backup.config.azure.account | string | `nil` |  |
 | backup.config.azure.container | string | `nil` |  |
@@ -22,7 +22,7 @@
 | backup.config.transaction_batch_size | int | `1000000` | Transaction batch size |
 | backup.enable | bool | `false` | Whether to enable backup |
 | backup.image.pullPolicy | string | `"IfNotPresent"` | Image pull policy to use for backup images |
-| backup.image.repo | string | `"aptoslabs/tools"` | Image repo to use for backup images |
+| backup.image.repo | string | `"creditchainorg/tools"` | Image repo to use for backup images |
 | backup.image.tag | string | `nil` | Image tag to use for backup images |
 | backup.nodeSelector | object | `{}` |  |
 | backup.resources.limits.cpu | int | `6` |  |
@@ -52,9 +52,9 @@
 | chain.genesisSecret | string | `nil` | Kubernetes Secret from which to load the genesis.blob and waypoint.txt |
 | chain.label | string | `nil` | The value of the `chain_name` label. If empty, defaults to `.Values.chain.name` |
 | chain.name | string | `"devnet"` | Name of the testnet to connect to. There must be a corresponding entry in .Values.creditchain_chains |
-| fullnode.config | object | `{"full_node_networks":[{"identity":{},"inbound_rate_limit_config":null,"network_id":"public","outbound_rate_limit_config":null}]}` | Fullnode configuration. See NodeConfig https://github.com/ibankio/creditchain/blob/main/config/src/config/mod.rs |
+| fullnode.config | object | `{"full_node_networks":[{"identity":{},"inbound_rate_limit_config":null,"network_id":"public","outbound_rate_limit_config":null}]}` | Fullnode configuration. See NodeConfig https://github.com/creditchainorg/creditchain/blob/main/config/src/config/mod.rs |
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy to use for fullnode images |
-| image.repo | string | `"aptoslabs/validator"` | Image repo to use for fullnode images. Fullnodes and validators use the same image |
+| image.repo | string | `"creditchainorg/validator"` | Image repo to use for fullnode images. Fullnodes and validators use the same image |
 | image.tag | string | `nil` | Image tag to use for fullnode images. If set, overrides `imageTag` |
 | imageTag | string | `"devnet"` | Default image tag to use for all fullnode images |
 | ingress.annotations | object | `{}` |  |
@@ -84,7 +84,7 @@
 | restore.config.trusted_waypoints | list | `[]` | List of trusted waypoints for restore |
 | restore.enabled | bool | `false` |  |
 | restore.image.pullPolicy | string | `"IfNotPresent"` | Image pull policy to use for restore images |
-| restore.image.repo | string | `"aptoslabs/tools"` | Image repo to use for restore images |
+| restore.image.repo | string | `"creditchainorg/tools"` | Image repo to use for restore images |
 | restore.image.tag | string | `nil` | Image tag to use for restore images |
 | restore.nodeSelector | object | `{}` |  |
 | restore.resources.limits.cpu | int | `16` |  |
@@ -99,7 +99,7 @@
 | service.exposeMetrics | bool | `false` | Whether to expose the metrics port on fullnodes |
 | service.externalTrafficPolicy | string | `nil` | The externalTrafficPolicy for the fullnode service |
 | service.loadBalancerSourceRanges | list | `[]` | If set and if the ServiceType is LoadBalancer, allow traffic to fullnode from these CIDRs |
-| service.type | string | `"ClusterIP"` | The Kubernetes ServiceType to use for the fullnode. Change this to LoadBalancer expose the REST API, aptosnet endpoint externally |
+| service.type | string | `"ClusterIP"` | The Kubernetes ServiceType to use for the fullnode. Change this to LoadBalancer to expose the REST API endpoint externally |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` | Specifies whether a service account should be created |
 | serviceAccount.name | string | `nil` | The name of the service account to use. If not set and create is true, a name is generated using the fullname template |
@@ -121,7 +121,7 @@ See [values.yaml][] for the full list of options you can configure.
 Connecting to Testnet
 -------------
 
-To connect to the CreditChain devnet, you must have the correct genesis blob and waypoint. The source of truth for these are hosted here: https://github.com/aptos-labs/creditchain-genesis-waypoint
+To connect to the CreditChain devnet, you must have the correct genesis blob and waypoint. The source of truth for these are hosted here: https://github.com/creditchainorg/creditchain-networks
 
 The waypoint and genesis blobs are download at runtime, and their URLs are specified in `.Values.creditchain_chains`.
 
@@ -134,6 +134,6 @@ Deployment
 
        $ helm install fullnode --set storage.class=gp2 .
 
-[REST API]: https://github.com/ibankio/creditchain/blob/main/api/doc/v0/openapi.yaml
+[REST API]: https://github.com/creditchainorg/creditchain/blob/main/api/doc/v0/openapi.yaml
 [values.yaml]: values.yaml
-[CreditChain dockerhub]: https://hub.docker.com/r/aptoslabs/validator/tags?page=1&ordering=last_updated
+[CreditChain dockerhub]: https://hub.docker.com/r/creditchainorg/validator/tags?page=1&ordering=last_updated

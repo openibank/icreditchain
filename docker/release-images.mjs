@@ -19,7 +19,7 @@
 //  - node (node.js)
 //  - crane - https://github.com/google/go-containerregistry/tree/main/cmd/crane#installation
 //  - pnpm - https://pnpm.io/installation
-// 2. docker login - with authorization to push to the `aptoslabs` org
+// 2. docker login - with authorization to push to the `creditchainorg` org
 // 3. gcloud auth configure-docker us-docker.pkg.dev
 // 4. gcloud auth login --update-adc
 // 5. AWS CLI credentials configured
@@ -120,7 +120,7 @@ async function main() {
   
   const AWS_ECR = `${parsedArgs.AWS_ACCOUNT_ID}.dkr.ecr.us-west-2.amazonaws.com/aptos`;
   const GCP_ARTIFACT_REPO = parsedArgs.GCP_DOCKER_ARTIFACT_REPO;
-  const DOCKERHUB = "docker.io/aptoslabs";
+  const DOCKERHUB = "docker.io/creditchainorg";
 
   const INTERNAL_TARGET_REGISTRIES = [GCP_ARTIFACT_REPO, AWS_ECR];
 

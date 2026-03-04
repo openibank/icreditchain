@@ -44,7 +44,7 @@ imageTag: testnet
 genesis:
   image:
     # -- Image repo to use for tools image for running genesis
-    repo: aptoslabs/tools
+    repo: creditchainorg/tools
     # -- Image tag to use for tools image. If set, overrides `imageTag`
     tag:
     # -- Image pull policy to use for tools image
@@ -73,7 +73,7 @@ genesis:
     enable_onchain_discovery: true
     # -- If `enable_onchain_discovery` is false, use this host suffix for internal kubernetes service name
     internal_host_suffix: fullnode-lb
-  # -- The local path for move modules in the docker image. Defaults to the creditchain-framework in the aptoslabs/tools docker image
+  # -- The local path for move modules in the docker image. Defaults to the creditchain-framework in the creditchainorg/tools docker image
   moveModulesDir: /creditchain-framework/move/modules
   # -- Options for multicluster mode. This is *experimental only*
   multicluster:

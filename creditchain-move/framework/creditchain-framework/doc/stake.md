@@ -1955,7 +1955,7 @@ Voting power increase has exceeded the limit for this current epoch.
 <a id="0x1_stake_MAX_VALIDATOR_SET_SIZE"></a>
 
 Limit the maximum size to u16::max, it's the current limit of the bitvec
-https://github.com/libra2org/libra2-core/blob/main/crates/libra2-bitvec/src/lib.rs#L20
+https://github.com/ibankio/creditchain/blob/main/crates/libra2-bitvec/src/lib.rs#L20
 
 
 <pre><code><b>const</b> <a href="stake.md#0x1_stake_MAX_VALIDATOR_SET_SIZE">MAX_VALIDATOR_SET_SIZE</a>: u64 = 65536;
@@ -6387,4 +6387,4 @@ Returns validator's next epoch voting power, including pending_active, active, a
 </code></pre>
 
 
-[move-book]: https://docs.libra2.org/move/book/SUMMARY
+[move-book]: https://docs.creditchain.org/move/book/SUMMARY

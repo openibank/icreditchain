@@ -3522,7 +3522,7 @@ This address should be deterministic for the same admin and vesting contract cre
 <td>The shareholders should be able to start vesting only after the vesting cliff and the first vesting period have transpired.</td>
 <td>High</td>
 <td>The end of the vesting cliff is stored under VestingContract.vesting_schedule.start_timestamp_secs. The vest function always checks that timestamp::now_seconds is greater or equal to the end of the vesting cliff period.</td>
-<td>Audited the check for the end of vesting cliff: <a href="https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-framework/sources/vesting.move#L566">vest</a> module.</td>
+<td>Audited the check for the end of vesting cliff: <a href="https://github.com/ibankio/creditchain/blob/main/libra2-move/framework/libra2-framework/sources/vesting.move#L566">vest</a> module.</td>
 </tr>
 
 <tr>
@@ -4646,4 +4646,4 @@ This address should be deterministic for the same admin and vesting contract cre
 </code></pre>
 
 
-[move-book]: https://docs.libra2.org/move/book/SUMMARY
+[move-book]: https://docs.creditchain.org/move/book/SUMMARY

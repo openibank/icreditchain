@@ -138,7 +138,7 @@ jobs:
           # get the last 10 commits if GIT_SHA is not specified
           fetch-depth: inputs.GIT_SHA != null && 0 || 10
 
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         if: ${{ !inputs.SKIP_JOB }}
 
       - name: Install python deps
@@ -155,7 +155,7 @@ jobs:
           auth_duration=$(( $FORGE_RUNNER_DURATION_SECS > 5400 ? $FORGE_RUNNER_DURATION_SECS + 30 * 60 : 5400 ))
           echo "auth_duration=${auth_duration}" >> $GITHUB_OUTPUT
 
-      - uses: ibankio/creditchain/.github/actions/docker-setup@main
+      - uses: ./.github/actions/docker-setup
         if: ${{ !inputs.SKIP_JOB }}
         id: docker-setup
         with:
@@ -269,6 +269,6 @@ jobs:
       #   with:
       #     # Configured in the nextest.toml file
       #     junit-paths: ${{ env.FORGE_JUNIT_XML_PATH }}
-      #     org-slug: aptoslabs
+      #     org-slug: creditchainorg
       #     token: ${{ secrets.TRUNK_API_TOKEN }}
       #   continue-on-error: true

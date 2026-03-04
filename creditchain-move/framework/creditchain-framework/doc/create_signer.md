@@ -77,7 +77,7 @@ on account to have access to this.
 <td>The account owner should have the ability to create a signer for their account.</td>
 <td>Medium</td>
 <td>Before an Account resource is created, a signer is created for the specified new_address, and later, the Account resource is assigned to this signer.</td>
-<td>Enforced by the <a href="https://github.com/libra2org/libra2-core/blob/main/third_party/move/move-vm/types/src/values/values_impl.rs#L1129">move vm</a>.</td>
+<td>Enforced by the <a href="https://github.com/ibankio/creditchain/blob/main/third_party/move/move-vm/types/src/values/values_impl.rs#L1129">move vm</a>.</td>
 </tr>
 
 <tr>
@@ -140,4 +140,4 @@ Convert address to singer and return.
 </code></pre>
 
 
-[move-book]: https://docs.libra2.org/move/book/SUMMARY
+[move-book]: https://docs.creditchain.org/move/book/SUMMARY

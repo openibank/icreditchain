@@ -209,7 +209,7 @@ impl FrameworkPackageArgs {
         prompt_options: PromptOptions,
     ) -> CliTypedResult<()> {
         const CREDITCHAIN_FRAMEWORK: &str = "CreditChainFramework";
-        const CREDITCHAIN_GIT_PATH: &str = "https://github.com/libra2org/libra2-framework.git";
+        const CREDITCHAIN_GIT_PATH: &str = "https://github.com/creditchainorg/creditchain.git";
         const SUBDIR_PATH: &str = "creditchain-framework";
         const DEFAULT_BRANCH: &str = "mainnet";
 

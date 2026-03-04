@@ -23,10 +23,10 @@ jobs:
         with:
           ref: ${{ inputs.branch }}
 
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
 
       - name: Bump CC node version
-        uses: ibankio/creditchain/.github/actions/release-cc-node@main
+        uses: ./.github/actions/release-cc-node
         with:
           release_tag: ${{ inputs.release_tag }}
           cc_node_cargo_toml: creditchain-node/Cargo.toml

@@ -125,7 +125,7 @@ for i in $(seq 0 $(($NUM_VALIDATORS - 1))); do
 done
 
 # get the framework
-# this is the directory the creditchain-framework is located in the aptoslabs/tools docker image
+# this is the directory the creditchain-framework is located in the creditchainorg/tools docker image
 cp $MOVE_FRAMEWORK_DIR/head.mrb ${WORKSPACE}/framework.mrb
 
 # run genesis

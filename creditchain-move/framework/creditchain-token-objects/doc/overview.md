@@ -19,4 +19,4 @@ This is the reference documentation of the CreditChain Token Objects framework.
 -  [`0x4::token`](token.md#0x4_token)
 
 
-[move-book]: https://docs.libra2.org/move/book/SUMMARY
+[move-book]: https://docs.creditchain.org/move/book/SUMMARY

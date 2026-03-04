@@ -35,7 +35,7 @@ jobs:
         with:
           ref: ${{ inputs.GIT_SHA }}
 
-      - uses: ibankio/creditchain/.github/actions/docker-setup@main
+      - uses: ./.github/actions/docker-setup
         if: ${{ !inputs.SKIP_JOB }}
         with:
           GCP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}

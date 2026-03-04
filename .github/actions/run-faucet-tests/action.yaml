@@ -7,7 +7,8 @@ inputs:
     required: true
   IMAGE_TAG:
     description: "The docker image tag to use for the local testnet if NETWORK=custom."
-    required: true
+    required: false
+    default: ""
   GCP_DOCKER_ARTIFACT_REPO:
     description: "The GCP Docker artifact repository"
     required: true
@@ -28,7 +29,7 @@ runs:
 
     # Set up Rust for running the integration tests.
     - name: Set up Rust
-      uses: ibankio/creditchain/.github/actions/rust-setup@main
+      uses: ./.github/actions/rust-setup
 
     - uses: ./.github/actions/python-setup
       with:

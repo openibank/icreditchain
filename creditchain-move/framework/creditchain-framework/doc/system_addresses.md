@@ -591,4 +591,4 @@ Specifies that a function aborts if the account does not have the VM reserved ad
 </code></pre>
 
 
-[move-book]: https://docs.libra2.org/move/book/SUMMARY
+[move-book]: https://docs.creditchain.org/move/book/SUMMARY

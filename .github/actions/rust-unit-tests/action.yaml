@@ -62,6 +62,6 @@ runs:
       with:
         # Configured in the nextest.toml file
         junit-paths: target/nextest/ci/junit.xml
-        org-slug: aptoslabs
+        org-slug: creditchainorg
         token: ${{ inputs.TRUNK_API_TOKEN }}
       continue-on-error: true

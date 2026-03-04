@@ -73,7 +73,7 @@ variable "k8s_admins" {
 ### Testnet config
 
 variable "chain_id" {
-  description = "Libra2 chain ID. If var.enable_forge set, defaults to 4"
+  description = "CreditChain chain ID. If var.enable_forge set, defaults to 4"
   type        = number
   default     = 4
 }
@@ -85,13 +85,13 @@ variable "era" {
 }
 
 variable "chain_name" {
-  description = "Libra2 chain name. If unset, defaults to using the workspace name"
+  description = "CreditChain chain name. If unset, defaults to using the workspace name"
   type        = string
   default     = ""
 }
 
 variable "image_tag" {
-  description = "Docker image tag for all Libra2 workloads, including validators, fullnodes, backup, restore, genesis, and other tooling"
+  description = "Docker image tag for all CreditChain workloads, including validators, fullnodes, backup, restore, genesis, and other tooling"
   type        = string
   default     = "devnet"
 }

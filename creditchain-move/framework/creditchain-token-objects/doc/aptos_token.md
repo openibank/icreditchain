@@ -1700,4 +1700,4 @@ With an existing collection, directly mint a soul bound token into the recipient
 </details>
 
 
-[move-book]: https://docs.libra2.org/move/book/SUMMARY
+[move-book]: https://docs.creditchain.org/move/book/SUMMARY

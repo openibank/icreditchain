@@ -13,9 +13,9 @@ Example (testing CLI in image):
   python3 main.py --base-network testnet --test-cli-tag mainnet_0431e2251d0b42920d89a52c63439f7b9eda6ac3
 
 Example (testing locally built CLI binary):
-  python3 main.py --base-network devnet --test-cli-path ~/creditchain-core/target/release/libra2
+  python3 main.py --base-network devnet --test-cli-path ~/creditchain/target/release/creditchain
 
-This means, run the CLI test suite using a CLI built from mainnet_0431e2251d0b42920d89a52c63439f7b9eda6ac3 against a localnet built from the testnet branch of creditchain-core.
+This means, run the CLI test suite using a CLI built from mainnet_0431e2251d0b42920d89a52c63439f7b9eda6ac3 against a localnet built from the testnet branch of creditchain.
 
 Example (using a different image repo):
   See ~/.github/workflows/cli-e2e-tests.yaml
@@ -93,13 +93,13 @@ def parse_args():
     parser.add_argument("-d", "--debug", action="store_true")
     parser.add_argument(
         "--image-repo-with-project",
-        default="aptoslabs",
+        default="creditchainorg",
         help=(
             "What docker image repo (+ project) to use for the localnet. "
-            "By default we use Docker Hub: %(default)s (so, just aptoslabs for the "
+            "By default we use Docker Hub: %(default)s (so, just creditchainorg for the "
             "project since Docker Hub is the implied default repo). If you want to "
             "specify a different repo, it might look like this: "
-            "docker.pkg.github.com/aptoslabs/aptos-core"
+            "docker.pkg.github.com/creditchainorg/creditchain"
         ),
     )
     parser.add_argument(
@@ -122,7 +122,7 @@ def parse_args():
     )
     test_cli_args.add_argument(
         "--test-cli-path",
-        help="Path to CLI binary we want to test, e.g. /home/dport/aptos-core/target/release/aptos",
+        help="Path to CLI binary we want to test, e.g. /home/dport/creditchain/target/release/creditchain",
     )
     parser.add_argument(
         "--working-directory",

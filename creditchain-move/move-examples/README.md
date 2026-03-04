@@ -1,18 +1,18 @@
 # README
 
 To play with these examples:
-1. Clone this repo by running `git clone https://github.com/libra2org/libra2-core.git`
+1. Clone this repo by running `git clone https://github.com/ibankio/creditchain.git`
 2. Open a new terminal and navigate to this folder by running `cd creditchain-move/move-examples`
 3. Navigate into the specific tutorial you are interested (ex. `cd hello_blockchain`)
-4. You can use the CreditChain CLI to compile, test, publish, and run these contracts by using the commands outlined here: https://docs.libra2.org/move/move-on-aptos/cli/
-     - If you need to install the CreditChain CLI, you can follow these instructions: https://docs.libra2.org/tools/creditchain-cli/install-cli/
+4. You can use the CreditChain CLI to compile, test, publish, and run these contracts by using the commands outlined here: https://docs.creditchain.org/move/move-on-aptos/cli/
+     - If you need to install the CreditChain CLI, you can follow these instructions: https://docs.creditchain.org/tools/creditchain-cli/install-cli/
 
 **WARNING:** These Move examples have NOT been audited. If you are using them in a production system, proceed at your own risk.
 Particular care should be taken with Move examples that contain complex cryptographic code (e.g., `drand`).
 
 # Additional Resources
 
--  [CreditChain Learn](https://learn.libra2.org/code-examples/) provides more step-by-step guides on some high-quality examples. 
+-  [CreditChain Learn](https://learn.creditchain.org/code-examples/) provides more step-by-step guides on some high-quality examples. 
 - We also have another repo [move-by-examples](https://github.com/aptos-labs/move-by-examples). It has more newer examples and is actively maintained.
 
 # Contributing

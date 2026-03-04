@@ -24,7 +24,7 @@ use std::{
 };
 
 pub(crate) const REPO_NAME: &str = "prover-dependency";
-pub(crate) const REPO_OWNER: &str = "libra2org";
+pub(crate) const REPO_OWNER: &str = "creditchainorg";
 
 pub(crate) const BOOGIE_BINARY_NAME: &str = "boogie";
 pub(crate) const TARGET_BOOGIE_VERSION: &str = "3.5.1";

@@ -5,4 +5,4 @@ appVersion: 0.1.0
 description: Additional components for creditchain-nodes testnet
 home: https://creditchain.org/
 sources:
-  - https://github.com/creditchainorg/creditchain-core
+  - https://github.com/creditchainorg/creditchain

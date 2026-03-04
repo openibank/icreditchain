@@ -22,9 +22,9 @@ not possible to download only first few transactions in a block - only the whole
 
 Transactions are fetched from the fullnode via REST API. Users should provide fullnode's REST API
 query endpoint using `--rest-endpoint E` flag. Examples of endpoints are:
-  - devnet: https://api.devnet.libra2.org/v1
-  - testnet: https://api.testnet.libra2.org/v1
-  - mainnet: https://api.mainnet.libra2.org/v1
+  - devnet: https://api.devnet.creditchain.org/v1
+  - testnet: https://api.testnet.creditchain.org/v1
+  - mainnet: https://api.mainnet.creditchain.org/v1
 
 #### Example
 
@@ -32,7 +32,7 @@ query endpoint using `--rest-endpoint E` flag. Examples of endpoints are:
 creditchain-replay-benchmark download \
   --begin-version 2232125001 \
   --end-version 2232125093 \
-  --rest-endpoint https://api.mainnet.libra2.org/v1 \
+  --rest-endpoint https://api.mainnet.creditchain.org/v1 \
   --transactions-file transactions.file
 ```
 saves transactions to `transactions.file` and outputs
@@ -69,16 +69,16 @@ Failed to fetch state value for StateKey::AccessPath { address: 0x1, path: "Code
 ...
 ```
 
-To learn more about the API quotas, see https://developers.libra2.org/docs/api-access/quotas.
+To learn more about the API quotas, see https://developers.creditchain.org/docs/api-access/quotas.
 It is possible to increase your quota by creating an API key in CreditChain Build. In order to do that,
-follow instructions here: https://developers.libra2.org/docs/api-access/api-keys. Then, when
+follow instructions here: https://developers.creditchain.org/docs/api-access/api-keys. Then, when
 using the tool the key can be specified using `--api-key K` flag.
 
 #### Example
 
 ```shell
 creditchain-replay-benchmark initialize \
-  --rest-endpoint https://api.mainnet.libra2.org/v1 \
+  --rest-endpoint https://api.mainnet.creditchain.org/v1 \
   --transactions-file transactions.file \
   --inputs-file baseline-state.file
 ```
@@ -113,7 +113,7 @@ on historical workloads.
 
 ```commandline
 creditchain-replay-benchmark initialize \
-  --rest-endpoint https://api.mainnet.libra2.org/v1 \
+  --rest-endpoint https://api.mainnet.creditchain.org/v1 \
   --transactions-file transactions.file
   --enable-features ENABLE_CALL_TREE_AND_INSTRUCTION_VM_CACHE \
   --inputs-file experiment-state.file

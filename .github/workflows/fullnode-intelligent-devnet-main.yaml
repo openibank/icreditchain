@@ -7,7 +7,7 @@ name: "fullnode-intelligent-devnet-main"
 on:
   workflow_dispatch:
   schedule:
-    - cron: "* 4 */3 * *" # Once every three days, at 04:00 (UTC)
+    - cron: "0 4 */3 * *" # Once every three days, at 04:00 (UTC)
 
 permissions:
   contents: read
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ibankio/creditchain/.github/actions/check-creditchain@main
+      - uses: ./.github/actions/check-creditchain
         with:
           cancel-workflow: ${{ github.event_name == 'schedule' }} # Cancel the workflow if it is scheduled on a fork
 

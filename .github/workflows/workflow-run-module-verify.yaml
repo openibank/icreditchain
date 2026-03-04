@@ -24,12 +24,12 @@ on:
       RUNS_ON:
         description: "The runner to use for the job."
         type: string
-        required: true
+        required: false
         default: "high-perf-docker-with-local-ssd"
       TIMEOUT_MINUTES:
         description: "Github job timeout in minutes"
         type: number
-        required: true
+        required: false
         default: 720
 
 jobs:
@@ -42,7 +42,7 @@ jobs:
         with:
           ref: ${{ inputs.GIT_SHA }}
 
-      - uses: ibankio/creditchain/.github/actions/rust-setup@main
+      - uses: ./.github/actions/rust-setup
         with:
           GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS }}
 

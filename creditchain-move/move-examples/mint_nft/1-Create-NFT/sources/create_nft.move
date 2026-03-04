@@ -20,7 +20,7 @@
 ///
 /// 2. Publish the module.
 /// - 2.a Make sure you're in the right directory.
-/// Run the following command in directory `libra2-core/libra2-move/move-examples/mint_nft/1-Create-NFT`.
+/// Run the following command in directory `creditchain-core/creditchain-move/move-examples/mint_nft/1-Create-NFT`.
 /// - 2.b Run the following CLI command to publish the module.
 /// libra2 move publish --named-addresses mint_nft=[default account's address]
 /// (If you don't know the default account's address, run `nano ~/.libra2/config.yaml` to see all addresses.)
@@ -52,7 +52,7 @@
     }
     */
 /// - 2.c Check the module we just published on the CreditChain Explorer.
-/// Go to https://explorer.libra2.org/. At the top right of the screen, select the network you used (devnet, testnet, etc.).
+/// Go to https://explorer.creditchain.org/. At the top right of the screen, select the network you used (devnet, testnet, etc.).
 /// Search for this transaction by putting the `transaction_hash` in the search box. (You'd need to run throught the above steps
 /// yourself, and search for the transaction using your own unique transaction hash.)
 /// We can see the changes we made by publishing this module under the `Changes` tab.

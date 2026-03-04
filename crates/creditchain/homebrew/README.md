@@ -3,7 +3,7 @@
 Homebrew is a package manager that works for MacOS Silicon and Intel chips as well as Linux distributions like Debian
 and Ubuntu.
 
-The [CreditChain command line interface (CLI)](https://github.com/ibankio/creditchain/tree/main/docs) may be installed
+The [CreditChain command line interface (CLI)](https://github.com/creditchainorg/creditchain/tree/main/docs) may be installed
 via [Homebrew](https://brew.sh/) for simplicity. This is an in-depth overview of Homebrew and the CreditChain formula. In this
 guide, we go over each section of the Homebrew formula and steps to implement changes in the future.
 
@@ -94,8 +94,8 @@ Once you have audited and tested your brew formula using the commands above, mak
 ```ruby
 class CreditChain < Formula
   desc "Layer 1 blockchain built to support fair access to decentralized assets for all"
-  homepage "https://github.com/ibankio/creditchain"
-  url "https://github.com/ibankio/creditchain/archive/refs/tags/creditchain-cli-v1.0.3.tar.gz"
+  homepage "https://github.com/creditchainorg/creditchain"
+  url "https://github.com/creditchainorg/creditchain/archive/refs/tags/creditchain-cli-v1.0.3.tar.gz"
   sha256 "670bb6cb841cb8a65294878af9a4f03d4cba2a598ab4550061fed3a4b1fe4e98"
   license "Apache-2.0"
   ...
@@ -165,7 +165,7 @@ brew livecheck --debug libra2
 
 ```ruby
   # Installs listed homebrew dependencies before CreditChain installation
-  # Dependencies needed: https://github.com/ibankio/creditchain/tree/main/docs
+  # Dependencies needed: https://github.com/creditchainorg/creditchain/tree/main/docs
   # See scripts/dev_setup.sh in creditchain for more info
   depends_on "cmake" => :build
   depends_on "rustup-init" => :build

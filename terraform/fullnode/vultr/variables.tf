@@ -47,13 +47,13 @@ variable "era" {
 }
 
 variable "chain_id" {
-  description = "Libra2 chain ID"
+  description = "CreditChain chain ID"
   type        = string
   default     = "DEVNET"
 }
 
 variable "chain_name" {
-  description = "Libra2 chain name"
+  description = "CreditChain chain name"
   type        = string
   default     = "devnet"
 }

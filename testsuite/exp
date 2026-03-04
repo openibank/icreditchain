@@ -299,7 +299,7 @@ def main(log_metadata: bool) -> None:
     init_logging(logger=log, print_metadata=log_metadata)
 
 
-@main.command(help="Run a workflow on the upstream libra2-core git repo")
+@main.command(help="Run a workflow on the upstream creditchain-core git repo")
 @click.option(
     "--features",
     multiple=True,

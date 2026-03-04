@@ -27,7 +27,7 @@ Now let's get started!
 
 ## Step 0: Preparation
 
-You should obtain a copy of the content of the directory in which this `README.md` resides. One way to achieve this is to clone [the CreditChain core repository](https://github.com/libra2org/libra2-core) and navigate to the [`creditchain-move/move-examples/move-tutorial`](..) directory. Subsequently, we assume you have a local copy of this directory and all paths are relative to this. To check that you have the right contents, run the `cd` and `ls` commands below to ensure the `move-tutorial` directory has the relevant subdirectories:
+You should obtain a copy of the content of the directory in which this `README.md` resides. One way to achieve this is to clone [the CreditChain core repository](https://github.com/ibankio/creditchain) and navigate to the [`creditchain-move/move-examples/move-tutorial`](..) directory. Subsequently, we assume you have a local copy of this directory and all paths are relative to this. To check that you have the right contents, run the `cd` and `ls` commands below to ensure the `move-tutorial` directory has the relevant subdirectories:
 
 ```shell
 > cd move-tutorial
@@ -35,7 +35,7 @@ You should obtain a copy of the content of the directory in which this `README.m
 step_1 step_2 step_2_sol step_3 ...
 ```
 
-You also need a recent version of the [CreditChain CLI](https://docs.libra2.org/tools/creditchain-cli/install-cli/). This tutorial is written using the following version:
+You also need a recent version of the [CreditChain CLI](https://docs.creditchain.org/tools/creditchain-cli/install-cli/). This tutorial is written using the following version:
 
 ```shell
 > libra2 --version
@@ -67,13 +67,13 @@ module 0xCAFE::basic_coin {
 ```
 
 This is defining a Move
-[module](https://docs.libra2.org/move/book/modules-and-scripts/). Modules are the
+[module](https://docs.creditchain.org/move/book/modules-and-scripts/). Modules are the
 building blocks of Move code, and are defined with a specific address -- the
 address that the module can be published under. In this case, the `basic_coin`
 module can be published only under `0xCAFE`.
 
 Let's now take a look at the next part of this file where we define a
-[struct](https://docs.libra2.org/move/book/structs-and-resources)
+[struct](https://docs.creditchain.org/move/book/structs-and-resources)
 to represent a `Coin` with a given `value`:
 
 ```
@@ -100,7 +100,7 @@ module 0xCAFE::basic_coin {
 ```
 
 Let us take a look at this function and what it is saying:
-* It takes a [`&signer`](https://docs.libra2.org/move/book/signer) reference ('`&`') -- an
+* It takes a [`&signer`](https://docs.creditchain.org/move/book/signer) reference ('`&`') -- an
   unforgeable token that represents control over a particular address, and
   a `value` to mint.
 * It creates a `Coin` with the given value and stores it under the
@@ -120,11 +120,11 @@ libra2 move compile
     libra2 move init --name <pkg_name>
     ```
 * Move code can also live in a number of other places. See the [Move
-  book](https://docs.libra2.org/move/book/packages) for more information on the
+  book](https://docs.creditchain.org/move/book/packages) for more information on the
   Move package system.
-* More information on the `Move.toml` file can also be found in the [Package](https://docs.libra2.org/move/book/packages#movetoml) section of the Move book.
+* More information on the `Move.toml` file can also be found in the [Package](https://docs.creditchain.org/move/book/packages#movetoml) section of the Move book.
 * Move also supports the idea of [named
-  addresses](https://docs.libra2.org/move/book/address#named-addresses); Named
+  addresses](https://docs.creditchain.org/move/book/address#named-addresses); Named
   addresses are a way to parameterize Move source code so that you can compile
   the module using different values for `named_addr` to get different bytecode
   that you can deploy, depending on what address(es) you control. They are used quite frequently, and can be defined in the `Move.toml` file in the `[addresses]` section, like so:
@@ -132,9 +132,9 @@ libra2 move compile
     [addresses]
     Somenamed_address = "0xC0FFEE"
     ```
-* [Structures](https://docs.libra2.org/move/book/structs-and-resources) in Move
+* [Structures](https://docs.creditchain.org/move/book/structs-and-resources) in Move
   can be given different
-  [abilities](https://docs.libra2.org/move/book/abilities) that describe what
+  [abilities](https://docs.creditchain.org/move/book/abilities) that describe what
   can be done with that type. There are four different abilities:
     - `copy`: Allows values of types with this ability to be copied.
     - `drop`: Allows values of types with this ability to be popped/dropped.
@@ -145,12 +145,12 @@ libra2 move compile
     in global storage and, because it has no other abilities, it cannot be
     copied, dropped, or stored as a non-key value in storage. So you can't copy
     coins, and you also can't lose coins by accident!
-* [Functions](https://docs.libra2.org/move/book/functions) are default
+* [Functions](https://docs.creditchain.org/move/book/functions) are default
     private, and can also be `public`,
-    [`public(friend)`](https://docs.libra2.org/move/book/friends).
+    [`public(friend)`](https://docs.creditchain.org/move/book/friends).
     A function marked as `entry` can be called as a transaction.
 * `move_to` is one of the [five different global storage
-  operators](https://docs.libra2.org/move/book/global-storage-operators).
+  operators](https://docs.creditchain.org/move/book/global-storage-operators).
 </details>
 
 ## Step 2: Adding unit tests to my first Move module<span id="Step2"><span>
@@ -196,7 +196,7 @@ assertion fails the unit test will fail.
 <details>
 <summary>Advanced concepts and exercises</summary>
 
-* There are a number of [test-related annotations](https://docs.libra2.org/move/book/unit-testing#testing-annotations-their-meaning-and-usage) that are worth exploring.
+* There are a number of [test-related annotations](https://docs.creditchain.org/move/book/unit-testing#testing-annotations-their-meaning-and-usage) that are worth exploring.
   You'll see some of these used in Step 5.
 
 #### Exercises
@@ -291,7 +291,7 @@ method directly from a transaction, you'll want to change its signature to:
 ```
 public entry fun transfer(from: signer, to: address, amount: u64) acquires Balance { ... }
 ```
-Read more on Move function [visibilities](https://docs.libra2.org/move/book/functions#visibility).
+Read more on Move function [visibilities](https://docs.creditchain.org/move/book/functions#visibility).
 </details>
 <details>
 <summary>Comparison with Ethereum/Solidity</summary>
@@ -348,10 +348,10 @@ is false, then abort the transaction with `<abort_code>`. Here `MODULE_OWNER` an
 defined at the beginning of the module. The standard library's [`error`] module also defines common error categories we can use.
 
 It is important to note that Move is transactional in its execution -- so
-if an [abort](https://docs.libra2.org/move/book/abort-and-assert) is raised no unwinding of state
+if an [abort](https://docs.creditchain.org/move/book/abort-and-assert) is raised no unwinding of state
 needs to be performed, as no changes from that transaction will be persisted to the blockchain.
 
-[`error` module]: https://github.com/libra2org/libra2-core/blob/main/creditchain-move/framework/move-stdlib/sources/error.move
+[`error` module]: https://github.com/ibankio/creditchain/blob/main/creditchain-move/framework/move-stdlib/sources/error.move
 
 We then deposit a coin with value `amount` to the balance of `mint_addr`:
 ```
@@ -385,7 +385,7 @@ fun withdraw(addr: address, amount: u64) : Coin acquires Balance {
 }
 ```
 At the beginning of the method, we assert that the withdrawing account has enough balance. We then use `borrow_global_mut`
-to get a mutable reference to the global storage, and `&mut` is used to create a mutable [reference](https://docs.libra2.org/move/book/references) to a field of a
+to get a mutable reference to the global storage, and `&mut` is used to create a mutable [reference](https://docs.creditchain.org/move/book/references) to a field of a
 struct. We then modify the balance through this mutable reference and return a new coin with the withdrawn amount.
 </details>
 
@@ -446,7 +446,7 @@ The solution to this exercise can be found in [`step_5_sol`](./step_5_sol).
 ## Step 6: Making my `basic_coin` module generic<span id="Step6"><span>
 
 In Move, we can use
-[generics](https://docs.libra2.org/move/book/generics)
+[generics](https://docs.creditchain.org/move/book/generics)
 to define functions and structs over different input data types. Generics are a great
 building block for library code. In this section, we are going to make our simple
 `basic_coin` module generic so that it can serve as a library module to be used by
@@ -487,17 +487,17 @@ In definitions of both `Coin` and `Balance`, we declare the type parameter `Coin
 to be phantom because `CoinType` is not used in the struct definition or is only used as a phantom type
 parameter.
 
-Read more about [phantom type](https://docs.libra2.org/move/book/generics#phantom-type-parameters) parameters in the CreditChain Move Book.
+Read more about [phantom type](https://docs.creditchain.org/move/book/generics#phantom-type-parameters) parameters in the CreditChain Move Book.
 </details>
 
 ## Step 7:  Use the Move Prover
     
-> NOTE: Before running the Move Prover, ensure that the [Move Prover](https://docs.libra2.org/tools/creditchain-cli/install-cli/install-move-prover) and associated tools are installed.
+> NOTE: Before running the Move Prover, ensure that the [Move Prover](https://docs.creditchain.org/tools/creditchain-cli/install-cli/install-move-prover) and associated tools are installed.
 
 Smart contracts deployed on the blockchain may manipulate high-value assets. As a technique that uses strict
 mathematical methods to describe behavior and reason correctness of computer systems, formal verification
 has been used in blockchains to prevent bugs in smart contracts. The
-[Move Prover](https://docs.libra2.org/move/prover/move-prover)
+[Move Prover](https://docs.creditchain.org/move/prover/move-prover)
 is an evolving formal verification tool for smart contracts written in the Move language. The user can employ the 
 [Move Prover](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/prover-guide.md) to specify
 functional properties of smart contracts

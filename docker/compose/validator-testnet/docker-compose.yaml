@@ -8,9 +8,9 @@
 # Additional information:
 # * If you use this compose for different CreditChain Networks, you will need remove the db volume first.
 # * If you would like to use the current CreditChain version within this repository, execute the
-#     `build.sh` in `docker/validator` and change the image tag below to creditchain_e2e:latest
-# * Validator images can be found at https://hub.docker.com/repository/docker/aptoslabs/validator/tags
-# * Faucet images can be found at https://hub.docker.com/repository/docker/aptoslabs/faucet/tags
+#     `build.sh` in `docker/builder` and change the image tag below to creditchain_e2e:latest
+# * Validator images can be found at https://hub.docker.com/repository/docker/creditchainorg/validator/tags
+# * Faucet images can be found at https://hub.docker.com/repository/docker/creditchainorg/faucet/tags
 
 # Monitoring:
 # If you want to install the monitoring components for your validator-testnet
@@ -26,7 +26,7 @@ services:
   validator:
     # Note this image currently does not support this, will update to the appropriate minimum
     # version shortly
-    image: "${VALIDATOR_IMAGE_REPO:-aptoslabs/validator}:${IMAGE_TAG:-devnet}"
+    image: "${VALIDATOR_IMAGE_REPO:-creditchainorg/validator}:${IMAGE_TAG:-devnet}"
     networks:
       shared:
         ipv4_address:  172.16.1.10

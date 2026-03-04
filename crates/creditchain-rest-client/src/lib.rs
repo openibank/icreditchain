@@ -320,7 +320,7 @@ impl Client {
     /// The `asset_type` parameter can be either:
     /// * A coin type (e.g. "0x1::creditchain_coin::CreditChainCoin")
     /// * A fungible asset metadata address (e.g. "0xa")
-    /// For more details, see: https://aptos.dev/en/build/apis/fullnode-rest-api-reference#tag/accounts/GET/accounts/{address}/balance/{asset_type}
+    /// For more details, see the REST OpenAPI spec under `api/doc/v0/openapi.yaml`.
     pub async fn get_account_balance(
         &self,
         address: AccountAddress,
@@ -394,7 +394,7 @@ impl Client {
         Ok(response.and_then(|inner| bcs::from_bytes(&inner))?)
     }
 
-    // TODO: Remove this, just use `get_index`: https://github.com/libra2org/libra2-core/issues/5597.
+    // TODO: Remove this, just use `get_index`: https://github.com/creditchainorg/creditchain/issues/5597.
     pub async fn get_ledger_information(&self) -> CreditChainResult<Response<State>> {
         let response = self.get_index_bcs().await?.map(|r| State {
             chain_id: r.chain_id,

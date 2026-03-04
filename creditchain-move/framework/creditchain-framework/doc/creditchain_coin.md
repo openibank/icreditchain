@@ -491,7 +491,7 @@ Claim the delegated mint capability and destroy the delegated token.
 <td>The LBT coin may only be created exactly once.</td>
 <td>Medium</td>
 <td>The initialization function may only be called once.</td>
-<td>Enforced through the <a href="https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-framework/sources/coin.move">coin</a> module, which has been audited.</td>
+<td>Enforced through the <a href="https://github.com/ibankio/creditchain/blob/main/libra2-move/framework/libra2-framework/sources/coin.move">coin</a> module, which has been audited.</td>
 </tr>
 
 <tr>
@@ -499,7 +499,7 @@ Claim the delegated mint capability and destroy the delegated token.
 <td>Any type of operation on the LBT coin should fail if the user has not registered for the coin.</td>
 <td>Medium</td>
 <td>Coin operations may succeed only on valid user coin registration.</td>
-<td>Enforced through the <a href="https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-framework/sources/coin.move">coin</a> module, which has been audited.</td>
+<td>Enforced through the <a href="https://github.com/ibankio/creditchain/blob/main/libra2-move/framework/libra2-framework/sources/coin.move">coin</a> module, which has been audited.</td>
 </tr>
 
 </table>
@@ -657,4 +657,4 @@ Claim the delegated mint capability and destroy the delegated token.
 </code></pre>
 
 
-[move-book]: https://docs.libra2.org/move/book/SUMMARY
+[move-book]: https://docs.creditchain.org/move/book/SUMMARY

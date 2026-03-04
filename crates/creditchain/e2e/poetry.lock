@@ -166,7 +166,7 @@ trio = ["trio (>=0.26.1)"]
 [[package]]
 name = "libra2-sdk"
 version = "0.10.0"
-description = "Libra2 SDK"
+description = "CreditChain SDK"
 optional = false
 python-versions = ">=3.8.1"
 groups = ["main"]

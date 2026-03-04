@@ -458,7 +458,7 @@ CreditChain                    Destination Chain
 | Document | Relationship |
 |----------|-------------|
 | This Doc (01_ARCHITECTURE) | Architecture overview |
-| Internal Rebranding Prompt Pack (`.prompt/`) | Libra2/Aptos legacy naming → CreditChain naming (internal-only) |
+| Internal Rebranding Prompt Pack (`.prompt/`) | CreditChain/Aptos legacy naming → CreditChain naming (internal-only) |
 | 02_TOKEN_ECONOMY_REFERENCE | Token economy reference (example-only) |
 | 03_MOVE_MODULES | Custom Move module specs |
 | 04_BRIDGE_SPEC | Cross-chain bridge design |

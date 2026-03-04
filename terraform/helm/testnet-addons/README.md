@@ -4,11 +4,11 @@
 
 Additional components for creditchain-nodes testnet
 
-**Homepage:** <https://github.com/ibankio/creditchain>
+**Homepage:** <https://github.com/creditchainorg/creditchain>
 
 ## Source Code
 
-* <https://github.com/ibankio/creditchain>
+* <https://github.com/creditchainorg/creditchain>
 
 ## Values
 

@@ -1558,4 +1558,4 @@ Mints a veiled coin from a normal coin, shelving the normal coin into the resour
 </details>
 
 
-[move-book]: https://docs.libra2.org/move/book/SUMMARY
+[move-book]: https://docs.creditchain.org/move/book/SUMMARY

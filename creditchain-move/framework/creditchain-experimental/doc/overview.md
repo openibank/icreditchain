@@ -32,4 +32,4 @@ This is the reference documentation of the CreditChain experimental framework.
 -  [`0x7::veiled_coin`](veiled_coin.md#0x7_veiled_coin)
 
 
-[move-book]: https://docs.libra2.org/move/book/SUMMARY
+[move-book]: https://docs.creditchain.org/move/book/SUMMARY

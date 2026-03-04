@@ -5,6 +5,10 @@ inputs:
   destination_directory:
     description: "Directory to install the CLI in"
     required: true
+  repository_url:
+    description: "Optional git repository URL to install the CLI from"
+    required: false
+    default: ""
 
 runs:
   using: composite
@@ -14,7 +18,11 @@ runs:
     - name: Install CLI from CreditChain repository
       shell: bash
       run: |
+        REPO_URL="${{ inputs.repository_url }}"
+        if [[ -z "${REPO_URL}" ]]; then
+          REPO_URL="${{ github.server_url }}/${{ github.repository }}.git"
+        fi
         mkdir -p "${{ inputs.destination_directory }}"
-        RUSTFLAGS="--cfg tokio_unstable" cargo install --locked --git https://github.com/ibankio/creditchain.git --profile cli creditchain
+        RUSTFLAGS="--cfg tokio_unstable" cargo install --locked --git "${REPO_URL}" --profile cli creditchain
         cp "$HOME/.cargo/bin/creditchain" "${{ inputs.destination_directory }}/creditchain"
         chmod +x "${{ inputs.destination_directory }}/creditchain"

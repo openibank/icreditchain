@@ -101,7 +101,7 @@ pub fn bootstrap(
 }
 
 // TODOs regarding spec generation:
-// TODO: https://github.com/libra2org/libra2-core/issues/2280
+// TODO: https://github.com/ibankio/creditchain/issues/2280
 // TODO: https://github.com/poem-web/poem/issues/321
 // TODO: https://github.com/poem-web/poem/issues/332
 // TODO: https://github.com/poem-web/poem/issues/333
@@ -153,14 +153,14 @@ pub fn get_api_service(
         LicenseObject::new("Apache 2.0").url("https://www.apache.org/licenses/LICENSE-2.0.html");
     let contact = ContactObject::new()
         .name("CreditChain Research Team")
-        .url("https://github.com/libra2org/libra2-core");
+        .url("https://github.com/ibankio/creditchain");
 
     OpenApiService::new(apis, "CreditChain Node API", version.trim())
         .server("/v1")
         .description("The CreditChain Node API is a RESTful API for client applications to interact with the CreditChain blockchain.")
         .license(license)
         .contact(contact)
-        .external_document("https://github.com/libra2org/libra2-core")
+        .external_document("https://github.com/ibankio/creditchain")
 }
 
 /// Returns address it is running at.
@@ -306,7 +306,7 @@ mod tests {
 
     // TODO: Unignore this when I figure out why this only works when being
     // run alone (it fails when run with other tests).
-    // https://github.com/libra2org/libra2-core/issues/2977
+    // https://github.com/ibankio/creditchain/issues/2977
     #[ignore]
     #[test]
     fn test_bootstrap_jsonprc_and_api_configured_at_different_port() {

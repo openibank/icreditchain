@@ -41,7 +41,7 @@ concurrency:
 
 jobs:
   determine-test-metadata:
-    runs-on: ubuntu-latest-32-core # consider  moving this to a smaller machine since the compute runs on GKE
+    runs-on: ubuntu-latest-16-cores # consider moving this to a smaller machine since the compute runs on GKE
     steps:
       # checkout the repo first, so check-creditchain can use it and cancel the workflow if necessary
       - uses: actions/checkout@v4

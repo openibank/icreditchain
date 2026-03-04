@@ -34,7 +34,7 @@ on:
       FORGE_INDEXER_DEPLOYER_PROFILE:
         required: false
         type: string
-        description: If set enables an indexer stack with your test, spinning up with the provided profile from https://github.com/aptos-labs/internal-ops/blob/main/infra/cli/commands/forge/profiles.ts
+        description: If set, enables an indexer stack with your test using the named deployer profile configured for your environment.
       FORGE_NUM_VALIDATORS:
         required: false
         type: string
@@ -82,7 +82,7 @@ jobs:
       forgeRetainDebugLogs: ${{ inputs.FORGE_RETAIN_DEBUG_LOGS }}
       forgeIndexerDeployerProfile: ${{ inputs.FORGE_INDEXER_DEPLOYER_PROFILE }}
   adhoc-forge-test:
-    uses: ibankio/creditchain/.github/workflows/workflow-run-forge.yaml@main
+    uses: ./.github/workflows/workflow-run-forge.yaml
     needs: [determine-forge-run-metadata]
     secrets: inherit
     with:

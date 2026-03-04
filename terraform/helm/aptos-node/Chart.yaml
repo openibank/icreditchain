@@ -5,4 +5,4 @@ appVersion: 1.0.0
 description: CreditChain blockchain node deployment
 home: https://creditchain.org/
 sources:
-- https://github.com/creditchainorg/creditchain-core
+- https://github.com/creditchainorg/creditchain

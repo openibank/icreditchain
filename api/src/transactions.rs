@@ -91,7 +91,7 @@ pub enum SubmitTransactionPost {
 
     // TODO: Since I don't want to impl all the Poem derives on SignedTransaction,
     // find a way to at least indicate in the spec that it expects a SignedTransaction.
-    // TODO: https://github.com/libra2org/libra2-core/issues/2275
+    // TODO: https://github.com/ibankio/creditchain/issues/2275
     #[oai(content_type = "application/x.libra2.signed_transaction+bcs")]
     Bcs(Bcs),
 }
@@ -114,7 +114,7 @@ pub enum SubmitTransactionsBatchPost {
 
     // TODO: Since I don't want to impl all the Poem derives on SignedTransaction,
     // find a way to at least indicate in the spec that it expects a SignedTransaction.
-    // TODO: https://github.com/libra2org/libra2-core/issues/2275
+    // TODO: https://github.com/ibankio/creditchain/issues/2275
     #[oai(content_type = "application/x.libra2.signed_transaction+bcs")]
     Bcs(Bcs),
 }
@@ -190,7 +190,7 @@ impl TransactionsApi {
     /// looks the transaction up by hash in the mempool (pending, not yet committed).
     ///
     /// To create a transaction hash by yourself, do the following:
-    ///   1. Hash message bytes: "RawTransaction" bytes + BCS bytes of [Transaction](https://github.com/libra2org/libra2-core/creditchain_types/transaction/enum.Transaction.html).
+    ///   1. Hash message bytes: "RawTransaction" bytes + BCS bytes of [Transaction](https://github.com/ibankio/creditchain/creditchain_types/transaction/enum.Transaction.html).
     ///   2. Apply hash algorithm `SHA3-256` to the hash message bytes.
     ///   3. Hex-encode the hash bytes with `0x` prefix.
     // TODO: Include a link to an example of how to do this ^

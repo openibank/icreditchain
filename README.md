@@ -127,7 +127,7 @@ cross-stablecoin atomic swaps.
 ## Heritage
 
 ```
-Facebook Libra (2019) → Diem (2020) → Aptos (2022) → Libra2 (2024) → CreditChain (2026)
+Facebook Libra (2019) → Diem (2020) → Aptos (2022) → CreditChain (2024) → CreditChain (2026)
 ```
 
 CreditChain inherits battle-tested infrastructure from the Libra/Diem/Aptos lineage and extends it with institution-grade financial modules purpose-built for the AI financial era.

@@ -41,7 +41,7 @@ on:
         description: The end version to use for the backup. If not specified, it will use the latest version.
 jobs:
   run-replay-verify:
-    runs-on: ubuntu-latest-32-core # consider moving this to a smaller machien since the compute runs on GKE
+    runs-on: ubuntu-latest-16-cores # consider moving this to a smaller machine since the compute runs on GKE
     timeout-minutes: 420 # 7 hours
     steps:
       - name: Checkout code
@@ -52,7 +52,7 @@ jobs:
           # we can optionally use the IMAGE_TAG to find the exact commit to checkout
           fetch-depth: 10
 
-      - uses: ibankio/creditchain/.github/actions/docker-setup@main
+      - uses: ./.github/actions/docker-setup
         id: docker-setup
         with:
           GCP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}

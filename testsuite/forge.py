@@ -389,7 +389,7 @@ def get_cpu_profile_link(
     start_time: datetime | None = None,
     end_time: datetime | None = None,
 ) -> str:
-    base_url = "https://grafana.libra2.org/a/grafana-pyroscope-app/profiles-explorer"
+    base_url = "https://grafana.creditchain.org/a/grafana-pyroscope-app/profiles-explorer"
     start_timestamp = str(int(start_time.timestamp())) if start_time else "now-1h"
     end_timestamp = str(int(end_time.timestamp())) if end_time else "now"
 
@@ -451,7 +451,7 @@ def get_humio_link_for_test_runner_logs(
             "type": "link",
             "openInNewBrowserTab": "***",
             "style": "button",
-            "hrefTemplate": 'https://github.com/libra2org/creditchain-core/pull/{{fields["github_pr"]}}',
+            "hrefTemplate": 'https://github.com/ibankio/creditchain/pull/{{fields["github_pr"]}}',
             "textTemplate": '{{fields["github_pr"]}}',
             "header": "Forge PR",
             "width": 79,
@@ -500,7 +500,7 @@ def get_humio_link_for_node_logs(
             "type": "link",
             "openInNewBrowserTab": "***",
             "style": "button",
-            "hrefTemplate": 'https://github.com/libra2org/creditchain-core/pull/{{fields["github_pr"]}}',
+            "hrefTemplate": 'https://github.com/ibankio/creditchain/pull/{{fields["github_pr"]}}',
             "textTemplate": '{{fields["github_pr"]}}',
             "header": "Forge PR",
             "width": 79,

@@ -43,7 +43,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       IMAGE_TAG: ${{ steps.get-docker-image-tag.outputs.IMAGE_TAG }}
-      IMAGE_TAG_FOR_COMPAT_TEST: ${{ steps.get-last-released-image-tag-for-compat-test.outputs.IMAGE_TAG }}
       BRANCH: ${{ steps.determine-test-branch.outputs.BRANCH }}
       BRANCH_HASH: ${{ steps.hash-branch.outputs.BRANCH_HASH }}
     steps:
@@ -80,12 +79,12 @@ jobs:
           # Hashing the branch name
           echo "BRANCH_HASH=$(echo -n "$BRANCH" | sha256sum | cut -c1-10)" >> $GITHUB_OUTPUT
 
-      - uses: ibankio/creditchain/.github/actions/check-creditchain@main
+      - uses: ./.github/actions/check-creditchain
         with:
           cancel-workflow: ${{ github.event_name == 'schedule' }} # Cancel the workflow if it is scheduled on a fork
 
       # actions/get-latest-docker-image-tag requires docker utilities and having authenticated to internal docker image registries
-      - uses: ibankio/creditchain/.github/actions/docker-setup@main
+      - uses: ./.github/actions/docker-setup
         id: docker-setup
         with:
           GCP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -96,7 +95,7 @@ jobs:
           AWS_DOCKER_ARTIFACT_REPO: ${{ secrets.AWS_DOCKER_ARTIFACT_REPO }}
           GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS }}
 
-      - uses: ibankio/creditchain/.github/actions/get-latest-docker-image-tag@main
+      - uses: ./.github/actions/get-latest-docker-image-tag
         id: get-docker-image-tag
         with:
           branch: ${{ steps.determine-test-branch.outputs.BRANCH }}
@@ -121,7 +120,7 @@ jobs:
   forge-indexer:
     if: ${{ github.event_name != 'pull_request' }}
     needs: determine-test-metadata
-    uses: ibankio/creditchain/.github/workflows/workflow-run-forge.yaml@main
+    uses: ./.github/workflows/workflow-run-forge.yaml
     secrets: inherit
     with:
       IMAGE_TAG: ${{ needs.determine-test-metadata.outputs.IMAGE_TAG }}
@@ -132,7 +131,7 @@ jobs:
   forge-indexer-sdk:
     if: ${{ github.event_name != 'pull_request' }}
     needs: determine-test-metadata
-    uses: ibankio/creditchain/.github/workflows/workflow-run-forge.yaml@main
+    uses: ./.github/workflows/workflow-run-forge.yaml
     secrets: inherit
     with:
       IMAGE_TAG: ${{ needs.determine-test-metadata.outputs.IMAGE_TAG }}

@@ -1,0 +1,69 @@
+admin_service:
+  enabled: false
+
+inspection_service:
+  address: 0.0.0.0
+  port: 9101
+  expose_configuration: false
+  expose_peer_information: true
+  expose_system_information: true
+
+api:
+  address: 0.0.0.0:8080
+
+base:
+  role: validator
+  data_dir: /opt/creditchain/data
+  waypoint:
+    from_file: /opt/creditchain/genesis/waypoint.txt
+
+execution:
+  genesis_file_location: /opt/creditchain/genesis/genesis.blob
+
+consensus:
+  safety_rules:
+    service:
+      type: local
+    backend:
+      type: on_disk_storage
+      path: /opt/creditchain/data/safety-rules.db
+      namespace: safety-rules
+    initial_safety_rules_config:
+      from_file:
+        waypoint:
+          from_file: /opt/creditchain/genesis/waypoint.txt
+        identity_blob_path: /opt/creditchain/genesis/validator2/validator-identity.yaml
+
+validator_network:
+  listen_address: /ip4/0.0.0.0/tcp/6180
+  discovery_method: onchain
+  mutual_authentication: true
+  identity:
+    type: from_file
+    path: /opt/creditchain/genesis/validator2/validator-identity.yaml
+
+full_node_networks:
+  - network_id:
+      private: vfn
+    listen_address: /ip4/0.0.0.0/tcp/6181
+    discovery_method: onchain
+    mutual_authentication: false
+    max_inbound_connections: 100
+    identity:
+      type: from_file
+      path: /opt/creditchain/genesis/validator2/validator-full-node-identity.yaml
+
+  - network_id: public
+    listen_address: /ip4/0.0.0.0/tcp/6182
+    discovery_method: onchain
+    mutual_authentication: false
+    max_inbound_connections: 200
+    identity:
+      type: from_file
+      path: /opt/creditchain/genesis/validator2/validator-full-node-identity.yaml
+
+logger:
+  level: INFO
+
+storage:
+  backup_service_address: 0.0.0.0:6186

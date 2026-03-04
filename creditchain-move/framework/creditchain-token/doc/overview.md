@@ -19,4 +19,4 @@ This is the reference documentation of the CreditChain Token framework.
 -  [`0x3::token_transfers`](token_transfers.md#0x3_token_transfers)
 
 
-[move-book]: https://docs.libra2.org/move/book/SUMMARY
+[move-book]: https://docs.creditchain.org/move/book/SUMMARY

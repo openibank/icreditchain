@@ -20,11 +20,11 @@
 /// Events are emitted during the execution of a transaction. Each Move module can define its own events and choose when
 /// to emit the events upon execution of the module. In this module, we are adding a custom `TokenMintingEvent` to keep track
 /// of the minted token_data_id and the token receiver's address.
-/// For more information about events, see: https://docs.libra2.org/concepts/events/.
+/// For more information about events, see: https://docs.creditchain.org/concepts/events/.
 ///
 /// Move unit tests
 /// We added a few unit tests to make sure that our code is working as expected. For more information on how to write
-/// Move unit tests, see: https://docs.libra2.org/move/book/unit-testing
+/// Move unit tests, see: https://docs.creditchain.org/move/book/unit-testing
 ///
 /// - How to interact with this module
 /// 1. Configure the admin account name address in Move.toml file.
@@ -32,7 +32,7 @@
 ///
 /// 2. Publish the module under a resource account.
 /// - 2.a Make sure you're in the right directory.
-/// Run the following command in directory `libra2-core/libra2-move/move-examples/mint_nft/4-Getting-Production-Ready`.
+/// Run the following command in directory `creditchain-core/creditchain-move/move-examples/mint_nft/4-Getting-Production-Ready`.
 /// - 2.b Run the following CLI command to publish the module under a resource account.
 /// libra2 move create-resource-account-and-publish-package --seed [seed] --address-name mint_nft --profile default --named-addresses source_addr=[default account's address]
 ///
@@ -62,11 +62,11 @@ yes
 }
 */
 /// - 3.c Generate a valid signature.
-///  Open up file `libra2-core/libra2-move/e2e-move-tests/src/tests/mint_nft.rs`.
+///  Open up file `creditchain-core/creditchain-move/e2e-move-tests/src/tests/mint_nft.rs`.
 ///  In function `generate_nft_tutorial_part4_signature`, change the `resource_address`, `nft_receiver`, `admin_private_key`, and `receiver_account_sequence_number` variables to the actual values.
 ///  You can find the `admin_private_key` by running `nano output.key`, and the `receiver_account_sequence_number` by looking up the receiver's address on the CreditChain Explorer under tab `Info`.
 ///  Make sure you're in the right directory.
-///  Run the following command in directory `libra2-core/libra2-move/e2e-move-tests`
+///  Run the following command in directory `creditchain-core/creditchain-move/e2e-move-tests`
 ///  Run `cargo test generate_nft_tutorial_part4_signature -- --nocapture` to generate a valid signature that we'll use in the next step.
 /// - 3.d Call mint_event_ticket() with the signature we generated in the last step.
 /// libra2 move run --function-id [resource account's address]::create_nft_getting_production_ready::mint_event_ticket --args hex:[signature generated in last step] --profile nft-receiver

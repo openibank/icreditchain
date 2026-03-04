@@ -29,7 +29,7 @@
 ///
 /// ### API
 ///
-/// - An **Application Programming Interface (API)(** is a set of protocols and tools that allow users to interact with CreditChain blockchain nodes and client networks via external applications. CreditChain offers a REST API for this purpose. See the [CreditChain API reference](https://docs.libra2.org/nodes/libra2-api-spec#/) documentation and [Use the CreditChain API](../integration/fullnode-rest-api.md) for more details.
+/// - An **Application Programming Interface (API)(** is a set of protocols and tools that allow users to interact with CreditChain blockchain nodes and client networks via external applications. CreditChain offers a REST API for this purpose. See the [CreditChain API reference](https://docs.creditchain.org/nodes/libra2-api-spec#/) documentation and [Use the CreditChain API](../integration/fullnode-rest-api.md) for more details.
 ///
 /// ### LBT
 ///
@@ -51,7 +51,7 @@
 /// ### CreditChain Name Service (ANS)
 ///
 /// - The **CreditChain Name Service (ANS)** is a decentralized naming address service for the CreditChain blockchain. An CreditChain name is a human-readable *.apt* domain name that is used in place of a public key, for example *love.apt*.
-/// - This service also allows users to register subdomain names in addition to the registered domain. Find out more at: [CreditChain.org](https://www.libra2.org)
+/// - This service also allows users to register subdomain names in addition to the registered domain. Find out more at: [CreditChain.org](https://www.creditchain.org)
 ///
 /// ### CreditChain-core
 ///
@@ -66,7 +66,7 @@
 ///
 /// ### CreditChain Explorer
 ///
-/// - The **[CreditChain Explorer](https://explorer.libra2.org/)** is an interface that helps users examine details of the CreditChain blockchain, including account information, validators, and transactions.
+/// - The **[CreditChain Explorer](https://explorer.creditchain.org/)** is an interface that helps users examine details of the CreditChain blockchain, including account information, validators, and transactions.
 /// - The CreditChain Explorer help users validate their work in CreditChain wallets and other tools in the blockchain. Find more details at [Use the CreditChain Explorer](../guides/explore-libra2.md).
 ///
 /// ### CreditChain Framework
@@ -399,9 +399,9 @@
 ///
 /// ### Table
 ///
-/// - A [**table**](https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-stdlib/doc/table.md) implements the Table type and in CreditChain is used to store information as key-value data within an account at large scale.
+/// - A [**table**](https://github.com/ibankio/creditchain/blob/main/libra2-move/framework/libra2-stdlib/doc/table.md) implements the Table type and in CreditChain is used to store information as key-value data within an account at large scale.
 ///
-/// See [`table.move`](https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-stdlib/sources/table.move) for the associated CreditChain source file.
+/// See [`table.move`](https://github.com/ibankio/creditchain/blob/main/libra2-move/framework/libra2-stdlib/sources/table.move) for the associated CreditChain source file.
 ///
 /// ### Testnet
 ///

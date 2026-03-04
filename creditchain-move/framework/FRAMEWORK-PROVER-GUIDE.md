@@ -2,7 +2,7 @@ This guide gives some hints to troubleshoot issues when using the prover for spe
 
 ## Installation
 
-Please refer to the [doc](https://docs.libra2.org/tools/creditchain-cli/install-cli/install-move-prover/).
+Please refer to the [doc](https://docs.creditchain.org/tools/creditchain-cli/install-cli/install-move-prover/).
 
 ## Timeout
 

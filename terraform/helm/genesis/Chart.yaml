@@ -5,4 +5,4 @@ appVersion: 0.1.0
 description: CreditChain blockchain automated genesis ceremony for testnets
 home: https://creditchain.org/
 sources:
-- https://github.com/creditchainorg/creditchain-core
+- https://github.com/creditchainorg/creditchain

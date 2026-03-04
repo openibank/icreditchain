@@ -93,7 +93,7 @@ docker/compose/indexer-grpc/data-service-grpc-server.key
 .*\#
 \#*\#
 
-# Libra2 CLI / local testnet files
+# CreditChain CLI / local testnet files
 .libra2
 **/*.rdb
 

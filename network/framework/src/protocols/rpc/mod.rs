@@ -41,7 +41,7 @@
 //! We limit the number of pending inbound and outbound RPC tasks to ensure that
 //! resource usage is bounded.
 //!
-//! [CreditChainNet wire protocol v1]: https://github.com/libra2org/libra2-core/blob/main/specifications/network/messaging-v1.md
+//! [CreditChainNet wire protocol v1]: https://github.com/ibankio/creditchain/blob/main/specifications/network/messaging-v1.md
 //! [`Peer`]: crate::peer::Peer
 
 use crate::{

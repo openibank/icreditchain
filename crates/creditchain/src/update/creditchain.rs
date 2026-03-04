@@ -31,11 +31,11 @@ use self_update::{
 #[derive(Debug, Parser)]
 pub struct CreditChainUpdateTool {
     /// The owner of the repo to download the binary from.
-    #[clap(long, default_value = "libra2org")]
+    #[clap(long, default_value = "creditchainorg")]
     repo_owner: String,
 
     /// The name of the repo to download the binary from.
-    #[clap(long, default_value = "creditchain-core")]
+    #[clap(long, default_value = "creditchain")]
     repo_name: String,
 
     /// If set, it will check if there are updates for the tool, but not actually update
@@ -71,7 +71,7 @@ impl BinaryUpdater for CreditChainUpdateTool {
 
         // Find the latest release of the CLI, in which we filter for the CLI tag.
         // If the release isn't in the last 30 items (the default API page size)
-        // this will fail. See https://github.com/libra2org/libra2-core/issues/6411.
+        // this will fail. See https://github.com/creditchainorg/creditchain/issues/6411.
         let mut releases = releases.into_iter();
         let latest_release = loop {
             let release = match releases.next() {
@@ -104,7 +104,7 @@ impl BinaryUpdater for CreditChainUpdateTool {
             },
             InstallationMethod::Homebrew => {
                 return Err(anyhow!(
-                    "Detected this CLI comes from homebrew, use `brew upgrade libra2` instead"
+                    "Detected this CLI comes from homebrew, use `brew upgrade creditchain` instead"
                 ));
             },
             InstallationMethod::PackageManager => {

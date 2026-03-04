@@ -709,7 +709,7 @@ pprof = { version = "0.11", features = ["flamegraph", "protobuf-codec"] }
 pretty = "0.10.0"
 pretty_assertions = "1.2.1"
 # We set default-features to false so we don't onboard the libpq dep. See more here:
-# https://github.com/libra2org/libra2-core/pull/12568
+# https://github.com/ibankio/creditchain/pull/12568
 processor = { path = "ecosystem/indexer-processors-v2/processor", default-features = false }
 procfs = "0.14.1"
 proc-macro2 = "1.0.38"
@@ -986,7 +986,7 @@ merlin = { git = "https://github.com/aptos-labs/merlin" }
 #futures-macro = { git = "https://github.com/aptos-labs/futures-rs", branch = "backport" }
 
 # Redirect any git-sourced SDK to local path
-[patch."https://github.com/libra2org/libra2-core.git"]
+[patch."https://github.com/ibankio/creditchain.git"]
 libra2-indexer-transaction-stream = { path = "ecosystem/transaction-stream" }
 libra2-indexer-processor-sdk = { path = "ecosystem/indexer-processor-sdk" }
 

@@ -1,12 +1,13 @@
 ---
 id: docker_compose
 title: CreditChain Docker-Compose Configuration
-custom_edit_url: https://github.com/aptos/aptos/edit/main/docker/compose/README.md
+custom_edit_url: https://github.com/creditchainorg/creditchain/edit/main/docker/compose/README.md
 ---
 
 This directory contains the following compose configurations:
 * **validator-testnet**: creates a single validator test network, and a faucet that directly connects to it
-* **public_full_node**: creates a public fullnode, and it can be configured to connect to any existing network (e.g. testnet, Mainnet).
+* **validator-testnet-3node**: creates a 3-validator docker network with automated genesis initialization
+* **creditchain-node**: creates a validator/fullnode deployment, configurable for existing networks (e.g. testnet, Mainnet)
 * **monitoring**: creates a monitoring stack which can be used to collect metrics and virtulize it on a dashboard. This can be installed together with other compose configurations and provides simple monitoring for the deployment.
 * **data-restore**: creates a DB restore job to restore a data volume from provided S3 bucket. This can be used to quickly restore fullnode for an existing blockchain to avoid spending long time on state-sync.
 
@@ -24,7 +25,7 @@ To build your own complete testnet:
     1. Faucet will be available at http://127.0.0.1:8000
     2. JSON-RPC will be available at http://127.0.0.1:8080
 
-If you would like to clear the validator/blockchain data and start from scratch, either remove the docker volume `aptos-shared`,
-or run `docker-compose run validator rm -rf '/opt/libra2/var/*'` from the **validator-testnet** directory.
+If you would like to clear the validator/blockchain data and start from scratch, either remove the docker volume `creditchain-shared`,
+or run `docker-compose run validator rm -rf '/opt/creditchain/var/*'` from the **validator-testnet** directory.
 
-To clear just the validator logs, run  `docker-compose run validator rm -rf '/opt/libra2/var/validator.log'`
+To clear just the validator logs, run  `docker-compose run validator rm -rf '/opt/creditchain/var/validator.log'`

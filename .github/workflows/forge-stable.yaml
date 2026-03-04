@@ -202,12 +202,28 @@ jobs:
       IMAGE_TAG_FOR_COMPAT_TEST: ${{ steps.get-last-released-image-tag-for-compat-test.outputs.IMAGE_TAG }}
       BRANCH: ${{ steps.determine-test-branch.outputs.BRANCH }}
       BRANCH_HASH: ${{ steps.hash-branch.outputs.BRANCH_HASH }}
+      CAN_RUN: ${{ steps.check-cloud-secrets.outputs.can-run }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Check required cloud secrets
+        id: check-cloud-secrets
+        env:
+          GCP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          GCP_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
+        run: |
+          if [[ -z "${GCP_WORKLOAD_IDENTITY_PROVIDER}" || -z "${GCP_SERVICE_ACCOUNT_EMAIL}" ]]; then
+            echo "can-run=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping forge stable run because required GCP secrets are not configured." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "can-run=true" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Determine branch based on cadence
         id: determine-test-branch
         # NOTE: the schedule cron MUST match the one in the 'on.schedule.cron' section above
+        env:
+          GIT_HEAD_REF: ${{ github.head_ref }}
         run: |
           BRANCH=""
           if [[ "${{ github.event_name }}" == "schedule" ]]; then
@@ -219,9 +235,9 @@ jobs:
             echo "BRANCH=${{ inputs.GIT_SHA }}" >> $GITHUB_OUTPUT
           # if GIT_SHA not provided, use the branch where workflow runs on
           else
-            echo "BRANCH=${{ github.head_ref }}" >> $GITHUB_OUTPUT
+            echo "BRANCH=${GIT_HEAD_REF}" >> $GITHUB_OUTPUT
           fi
-          echo "Branch: $(grep BRANCH= $GITHUB_OUTPUT)"
+          echo "Branch: $(grep BRANCH= "$GITHUB_OUTPUT")"
       # Use the branch hash instead of the full branch name to stay under kubernetes namespace length limit
       - name: Hash the branch
         id: hash-branch
@@ -229,13 +245,15 @@ jobs:
           # Hashing the branch name
           echo "BRANCH_HASH=$(echo -n "${{ steps.determine-test-branch.outputs.BRANCH }}" | sha256sum | cut -c1-10)" >> $GITHUB_OUTPUT
 
-      - uses: ibankio/creditchain/.github/actions/check-creditchain@main
+      - uses: ./.github/actions/check-creditchain
+        if: steps.check-cloud-secrets.outputs.can-run == 'true'
         with:
           cancel-workflow: ${{ github.event_name == 'schedule' }} # Cancel the workflow if it is scheduled on a fork
 
       # actions/get-latest-docker-image-tag requires docker utilities and having authenticated to internal docker image registries
-      - uses: ibankio/creditchain/.github/actions/docker-setup@main
+      - uses: ./.github/actions/docker-setup
         id: docker-setup
+        if: steps.check-cloud-secrets.outputs.can-run == 'true'
         with:
           GCP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
           GCP_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
@@ -245,19 +263,22 @@ jobs:
           AWS_DOCKER_ARTIFACT_REPO: ${{ secrets.AWS_DOCKER_ARTIFACT_REPO }}
           GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS }}
 
-      - uses: ibankio/creditchain/.github/actions/get-latest-docker-image-tag@main
+      - uses: ./.github/actions/get-latest-docker-image-tag
         id: get-docker-image-tag
+        if: steps.check-cloud-secrets.outputs.can-run == 'true'
         with:
           branch: ${{ steps.determine-test-branch.outputs.BRANCH }}
           variants: ${{ needs.generate-matrix.outputs.imageVariants }}
 
-      - uses: ibankio/creditchain/.github/actions/determine-or-use-target-branch-and-get-last-released-image@main
+      - uses: ./.github/actions/determine-or-use-target-branch-and-get-last-released-image
         id: get-last-released-image-tag-for-compat-test
+        if: steps.check-cloud-secrets.outputs.can-run == 'true'
         with:
           base-branch: ${{ steps.determine-test-branch.outputs.BRANCH }}
           variants: ${{ needs.generate-matrix.outputs.imageVariants }}
 
       - name: Write summary
+        if: steps.check-cloud-secrets.outputs.can-run == 'true'
         run: |
           IMAGE_TAG=${{ steps.get-docker-image-tag.outputs.IMAGE_TAG }}
           IMAGE_TAG_FOR_COMPAT_TEST=${{ steps.get-last-released-image-tag-for-compat-test.outputs.IMAGE_TAG }}
@@ -272,12 +293,12 @@ jobs:
   run:
     name: forge-${{ matrix.TEST_NAME }}
     needs: [determine-test-metadata, generate-matrix]
-    if: ${{ github.event_name != 'pull_request' }}
+    if: ${{ github.event_name != 'pull_request' && needs.determine-test-metadata.outputs.CAN_RUN == 'true' }}
     strategy:
       fail-fast: false
       max-parallel: ${{ inputs.JOB_PARALLELISM && fromJson(inputs.JOB_PARALLELISM) || 1 }}
       matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
-    uses: ibankio/creditchain/.github/workflows/workflow-run-forge.yaml@main
+    uses: ./.github/workflows/workflow-run-forge.yaml
     secrets: inherit
     with:
       IMAGE_TAG: ${{ ((matrix.FORGE_TEST_SUITE == 'compat' && needs.determine-test-metadata.outputs.IMAGE_TAG_FOR_COMPAT_TEST) || needs.determine-test-metadata.outputs.IMAGE_TAG) }}

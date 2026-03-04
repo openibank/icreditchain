@@ -1,7 +1,7 @@
 ---
 id: CreditChain-framework
 title: CreditChain Framework
-custom_edit_url: https://github.com/libra2org/libra2-core/edit/main/CreditChain-move/CreditChain-framework/README.md
+custom_edit_url: https://github.com/ibankio/creditchain/edit/main/CreditChain-move/CreditChain-framework/README.md
 ---
 
 ## The CreditChain Framework
@@ -18,10 +18,10 @@ files. See the [Layout](#layout) section for a more detailed overview of the str
 
 Each of the main components of the CreditChain Framework and contributing guidelines are documented separately. See them by version below:
 
-* *CreditChain tokens* - [main](https://github.com/libra2org/libra2-core/blob/main/creditchain-move/framework/creditchain-token/doc/overview.md), [testnet](https://github.com/libra2org/libra2-core/blob/testnet/creditchain-move/framework/creditchain-token/doc/overview.md), [devnet](https://github.com/libra2org/libra2-core/blob/devnet/creditchain-move/framework/creditchain-token/doc/overview.md)
-* *CreditChain framework* - [main](https://github.com/libra2org/libra2-core/blob/main/creditchain-move/framework/creditchain-framework/doc/overview.md), [testnet](https://github.com/libra2org/libra2-core/blob/testnet/creditchain-move/framework/creditchain-framework/doc/overview.md), [devnet](https://github.com/libra2org/libra2-core/blob/devnet/creditchain-move/framework/creditchain-framework/doc/overview.md)
-* *CreditChain stdlib* - [main](https://github.com/libra2org/libra2-core/blob/main/creditchain-move/framework/creditchain-stdlib/doc/overview.md), [testnet](https://github.com/libra2org/libra2-core/blob/testnet/creditchain-move/framework/creditchain-stdlib/doc/overview.md), [devnet](https://github.com/libra2org/libra2-core/blob/devnet/creditchain-move/framework/creditchain-stdlib/doc/overview.md)
-* *Move stdlib* - [main](https://github.com/libra2org/libra2-core/blob/main/creditchain-move/framework/move-stdlib/doc/overview.md), [testnet](https://github.com/libra2org/libra2-core/blob/testnet/creditchain-move/framework/move-stdlib/doc/overview.md), [devnet](https://github.com/libra2org/libra2-core/blob/devnet/creditchain-move/framework/move-stdlib/doc/overview.md)
+* *CreditChain tokens* - [main](https://github.com/ibankio/creditchain/blob/main/creditchain-move/framework/creditchain-token/doc/overview.md), [testnet](https://github.com/ibankio/creditchain/blob/testnet/creditchain-move/framework/creditchain-token/doc/overview.md), [devnet](https://github.com/ibankio/creditchain/blob/devnet/creditchain-move/framework/creditchain-token/doc/overview.md)
+* *CreditChain framework* - [main](https://github.com/ibankio/creditchain/blob/main/creditchain-move/framework/creditchain-framework/doc/overview.md), [testnet](https://github.com/ibankio/creditchain/blob/testnet/creditchain-move/framework/creditchain-framework/doc/overview.md), [devnet](https://github.com/ibankio/creditchain/blob/devnet/creditchain-move/framework/creditchain-framework/doc/overview.md)
+* *CreditChain stdlib* - [main](https://github.com/ibankio/creditchain/blob/main/creditchain-move/framework/creditchain-stdlib/doc/overview.md), [testnet](https://github.com/ibankio/creditchain/blob/testnet/creditchain-move/framework/creditchain-stdlib/doc/overview.md), [devnet](https://github.com/ibankio/creditchain/blob/devnet/creditchain-move/framework/creditchain-stdlib/doc/overview.md)
+* *Move stdlib* - [main](https://github.com/ibankio/creditchain/blob/main/creditchain-move/framework/move-stdlib/doc/overview.md), [testnet](https://github.com/ibankio/creditchain/blob/testnet/creditchain-move/framework/move-stdlib/doc/overview.md), [devnet](https://github.com/ibankio/creditchain/blob/devnet/creditchain-move/framework/move-stdlib/doc/overview.md)
 
 Follow our [contributing guidelines](CONTRIBUTING.md) and basic coding standards for the CreditChain Framework.
 

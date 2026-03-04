@@ -48,13 +48,13 @@ def parse_args():
     parser.add_argument("-d", "--debug", action="store_true")
     parser.add_argument(
         "--image-repo-with-project",
-        default="aptoslabs",
+        default="creditchainorg",
         help=(
             "What docker image repo (+ project) to use for the localnet. "
-            "By default we use Docker Hub: %(default)s (so, just aptoslabs for the "
+            "By default we use Docker Hub: %(default)s (so, just creditchainorg for the "
             "project since Docker Hub is the implied default repo). If you want to "
             "specify a different repo, it might look like this: "
-            "docker.pkg.github.com/aptoslabs/aptos-core"
+            "docker.pkg.github.com/creditchainorg/creditchain"
         ),
     )
     parser.add_argument(

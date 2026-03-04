@@ -29,13 +29,13 @@ variable "era" {
 }
 
 variable "chain_id" {
-  description = "Libra2 chain ID"
+  description = "CreditChain chain ID"
   type        = string
   default     = "TESTING"
 }
 
 variable "chain_name" {
-  description = "Libra2 chain name"
+  description = "CreditChain chain name"
   type        = string
   default     = "testnet"
 }
@@ -46,7 +46,7 @@ variable "validator_name" {
 }
 
 variable "image_tag" {
-  description = "Docker image tag for Libra2 node"
+  description = "Docker image tag for CreditChain node"
   type        = string
   default     = "devnet"
 }

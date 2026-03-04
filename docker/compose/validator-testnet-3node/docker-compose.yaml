@@ -1,0 +1,132 @@
+services:
+  genesis:
+    image: "${TOOLS_IMAGE_REPO:-creditchain-core/tools}:${IMAGE_TAG:-from-local}"
+    environment:
+      CHAIN_ID: "${CHAIN_ID:-43}"
+      STAKE_AMOUNT: "${STAKE_AMOUNT:-100000000000000}"
+      EPOCH_DURATION_SECS: "${EPOCH_DURATION_SECS:-7200}"
+      ALLOW_NEW_VALIDATORS: "${ALLOW_NEW_VALIDATORS:-true}"
+      CREDITCHAIN_DISABLE_TELEMETRY: "true"
+    volumes:
+      - type: bind
+        source: ./genesis/init-genesis.sh
+        target: /scripts/init-genesis.sh
+        read_only: true
+      - type: volume
+        source: creditchain-genesis-3n
+        target: /genesis
+    entrypoint: ["/bin/bash", "/scripts/init-genesis.sh"]
+    restart: "no"
+
+  validator0:
+    image: "${VALIDATOR_IMAGE_REPO:-creditchain-core/validator}:${IMAGE_TAG:-from-local}"
+    depends_on:
+      - genesis
+    volumes:
+      - type: volume
+        source: validator0-data
+        target: /opt/creditchain/data
+      - type: volume
+        source: creditchain-genesis-3n
+        target: /opt/creditchain/genesis
+        read_only: true
+      - type: bind
+        source: ./validator-0.yaml
+        target: /opt/creditchain/etc/validator.yaml
+        read_only: true
+    command:
+      - /bin/bash
+      - -c
+      - |
+        set -euo pipefail
+        until [ -f /opt/creditchain/genesis/genesis.blob ] && [ -f /opt/creditchain/genesis/validator0/validator-identity.yaml ]; do
+          sleep 1
+        done
+        exec /usr/local/bin/creditchain-node -f /opt/creditchain/etc/validator.yaml
+    ports:
+      - "8080:8080"
+      - "6180:6180"
+      - "6181:6181"
+      - "6182:6182"
+      - "9101:9101"
+    restart: unless-stopped
+
+  validator1:
+    image: "${VALIDATOR_IMAGE_REPO:-creditchain-core/validator}:${IMAGE_TAG:-from-local}"
+    depends_on:
+      - genesis
+    volumes:
+      - type: volume
+        source: validator1-data
+        target: /opt/creditchain/data
+      - type: volume
+        source: creditchain-genesis-3n
+        target: /opt/creditchain/genesis
+        read_only: true
+      - type: bind
+        source: ./validator-1.yaml
+        target: /opt/creditchain/etc/validator.yaml
+        read_only: true
+    command:
+      - /bin/bash
+      - -c
+      - |
+        set -euo pipefail
+        until [ -f /opt/creditchain/genesis/genesis.blob ] && [ -f /opt/creditchain/genesis/validator1/validator-identity.yaml ]; do
+          sleep 1
+        done
+        exec /usr/local/bin/creditchain-node -f /opt/creditchain/etc/validator.yaml
+    ports:
+      - "8081:8080"
+      - "6280:6180"
+      - "6281:6181"
+      - "6282:6182"
+      - "9201:9101"
+    restart: unless-stopped
+
+  validator2:
+    image: "${VALIDATOR_IMAGE_REPO:-creditchain-core/validator}:${IMAGE_TAG:-from-local}"
+    depends_on:
+      - genesis
+    volumes:
+      - type: volume
+        source: validator2-data
+        target: /opt/creditchain/data
+      - type: volume
+        source: creditchain-genesis-3n
+        target: /opt/creditchain/genesis
+        read_only: true
+      - type: bind
+        source: ./validator-2.yaml
+        target: /opt/creditchain/etc/validator.yaml
+        read_only: true
+    command:
+      - /bin/bash
+      - -c
+      - |
+        set -euo pipefail
+        until [ -f /opt/creditchain/genesis/genesis.blob ] && [ -f /opt/creditchain/genesis/validator2/validator-identity.yaml ]; do
+          sleep 1
+        done
+        exec /usr/local/bin/creditchain-node -f /opt/creditchain/etc/validator.yaml
+    ports:
+      - "8082:8080"
+      - "6380:6180"
+      - "6381:6181"
+      - "6382:6182"
+      - "9301:9101"
+    restart: unless-stopped
+
+networks:
+  default:
+    name: creditchain-validator-3n
+
+volumes:
+  creditchain-genesis-3n:
+    name: creditchain-genesis-3n
+  validator0-data:
+    name: creditchain-validator0-data
+  validator1-data:
+    name: creditchain-validator1-data
+  validator2-data:
+    name: creditchain-validator2-data

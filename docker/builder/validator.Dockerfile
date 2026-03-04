@@ -19,11 +19,11 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 ### Even if version slightly off, still mostly works
 RUN ln -sf /usr/bin/perf_* /usr/bin/perf
 
-RUN addgroup --system --gid 6180 libra2 && adduser --system --ingroup libra2 --no-create-home --uid 6180 libra2
+RUN addgroup --system --gid 6180 creditchain && adduser --system --ingroup creditchain --no-create-home --uid 6180 creditchain
 
-RUN mkdir -p /opt/libra2/etc
-COPY --link --from=node-builder /libra2/dist/libra2-node /usr/local/bin/
-COPY --link --from=tools-builder /libra2/dist/libra2-debugger /usr/local/bin/
+RUN mkdir -p /opt/creditchain/etc
+COPY --link --from=node-builder /creditchain/dist/creditchain-node /usr/local/bin/
+COPY --link --from=tools-builder /creditchain/dist/creditchain-debugger /usr/local/bin/
 
 # Admission control
 EXPOSE 8000

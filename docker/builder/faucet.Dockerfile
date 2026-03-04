@@ -7,9 +7,9 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     apt-get update && apt-get --no-install-recommends install -y \
         procps
 
-RUN mkdir -p /libra2/client/data/wallet/
+RUN mkdir -p /creditchain/client/data/wallet/
 
-COPY --link --from=tools-builder /libra2/dist/libra2-faucet-service /usr/local/bin/libra2-faucet-service
+COPY --link --from=tools-builder /creditchain/dist/creditchain-faucet-service /usr/local/bin/creditchain-faucet-service
 
 # Mint proxy listening address
 EXPOSE 8000

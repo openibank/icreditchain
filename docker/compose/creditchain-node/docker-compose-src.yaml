@@ -80,4 +80,4 @@ networks:
 
 volumes:
   creditchain-validator:
-    name: aptos-validator
+    name: creditchain-validator

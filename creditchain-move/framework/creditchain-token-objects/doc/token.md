@@ -1938,4 +1938,4 @@ as that would prohibit transactions to be executed in parallel.
 </details>
 
 
-[move-book]: https://docs.libra2.org/move/book/SUMMARY
+[move-book]: https://docs.creditchain.org/move/book/SUMMARY

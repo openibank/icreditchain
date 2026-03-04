@@ -1,3 +1,6 @@
+name: "Move Prover Setup"
+description: "Install Rust and Move prover dependencies used by prover CI jobs."
+
 inputs:
   GIT_CREDENTIALS:
     description: "Optional credentials to pass to git"

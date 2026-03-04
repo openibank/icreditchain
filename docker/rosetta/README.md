@@ -13,7 +13,7 @@ mkdir -p data && \
 cp config/src/config/test_data/public_full_node.yaml data/fullnode.yaml && \
 curl -o data/genesis.blob https://devnet.creditchain.org/genesis.blob && \
 curl -o data/waypoint.txt https://devnet.creditchain.org/waypoint.txt && \
-docker run -p 8082:8082 --rm -v $(pwd)/data:/opt/libra2/data creditchain:rosetta-latest online --config /opt/libra2/data/fullnode.yaml
+docker run -p 8082:8082 --rm -v $(pwd)/data:/opt/creditchain/data creditchain:rosetta-latest online --config /opt/creditchain/data/fullnode.yaml
 ```
 
 ## How to build the image
@@ -37,20 +37,20 @@ docker buildx build --file docker/rosetta/rosetta.Dockerfile --build-arg=GIT_REF
 The rosetta docker image contains a single binary `creditchain-rosetta` which is meant to run a fullnode and rosetta API:
 
 In order to run it, create a `data` directory and put a `fullnode.yaml`, `genesis.blob` and `waypoint.txt` into it.
-Since creditchain-rosetta is essentially just a special fullnode with a rosetta API, you can follow these instructions to fetch or create these config files: https://github.com/ibankio/creditchain/tree/main/docs
+Since creditchain-rosetta is essentially just a special fullnode with a rosetta API, you can follow these instructions to fetch or create these config files: https://github.com/creditchainorg/creditchain/tree/main/docs
 
 Once you've built the image and put all the config data in the `data` directory you can run creditchain-rosetta via:
 
 **online mode**
 
 ```
-docker run -p 8082:8082 --rm -v $(pwd)/data:/opt/libra2 creditchain:rosetta-latest online --config /opt/libra2/fullnode.yaml
+docker run -p 8082:8082 --rm -v $(pwd)/data:/opt/creditchain creditchain:rosetta-latest online --config /opt/creditchain/fullnode.yaml
 ```
 
 **offline mode**
 
 ```
-docker run -p 8082:8082 --rm -v $(pwd)/data:/opt/libra2 creditchain:rosetta-latest offline
+docker run -p 8082:8082 --rm -v $(pwd)/data:/opt/creditchain creditchain:rosetta-latest offline
 ```
 
 The Rosetta API is available under: http://localhost:8082

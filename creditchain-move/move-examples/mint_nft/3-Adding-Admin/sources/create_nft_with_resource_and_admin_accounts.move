@@ -17,7 +17,7 @@
 ///
 /// 2. Publish the module under a resource account.
 /// - 2.a Make sure you're in the right directory.
-/// Run the following command in directory `libra2-core/libra2-move/move-examples/mint_nft/3-Adding-Admin`.
+/// Run the following command in directory `creditchain-core/creditchain-move/move-examples/mint_nft/3-Adding-Admin`.
 /// - 2.b Run the following CLI command to publish the module under a resource account.
 /// libra2 move create-resource-account-and-publish-package --seed [seed] --address-name mint_nft --profile default --named-addresses source_addr=[default account's address]
 ///
@@ -102,7 +102,7 @@
       }
     }
     */
-/// - 4.d Check out the transactions on https://explorer.libra2.org/ by searching for the transaction hash.
+/// - 4.d Check out the transactions on https://explorer.creditchain.org/ by searching for the transaction hash.
 module mint_nft::create_nft_with_resource_and_admin_accounts {
     use std::error;
     use std::string;
@@ -189,7 +189,7 @@ module mint_nft::create_nft_with_resource_and_admin_accounts {
     /// Mint an NFT to the receiver. Note that different from the tutorial in 1-Create-NFT, here we only ask for the receiver's
     /// signer. This is because we used resource account to publish this module and stored the resource account's signer
     /// within the `ModuleData`, so we can programmatically sign for transactions instead of manually signing transactions.
-    /// See https://docs.libra2.org/concepts/accounts/#resource-accounts for more details.
+    /// See https://docs.creditchain.org/concepts/accounts/#resource-accounts for more details.
     public entry fun mint_event_ticket(receiver: &signer) acquires ModuleData {
         // Mint token to the receiver.
         let module_data = borrow_global_mut<ModuleData>(@mint_nft);

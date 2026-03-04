@@ -1,7 +1,7 @@
 ---
 id: creditchain-sdk-builder
 title: CreditChain SDK Builder
-custom_edit_url: https://github.com/libra2org/libra2-core/edit/main/language/creditchain-sdk-builder/README.md
+custom_edit_url: https://github.com/ibankio/creditchain/edit/main/language/creditchain-sdk-builder/README.md
 ---
 
 # CreditChain SDK Builder

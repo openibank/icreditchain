@@ -1607,4 +1607,4 @@ rewards_rate_decrease_rate must be within [0,1].
 </code></pre>
 
 
-[move-book]: https://docs.libra2.org/move/book/SUMMARY
+[move-book]: https://docs.creditchain.org/move/book/SUMMARY

@@ -1,3 +1,6 @@
+name: "Check CreditChain Repo"
+description: "Determine whether the calling repository is the canonical CreditChain repo."
+
 # A simple composite action that checks if the calling repository is CreditChain
 # There are some actions that should only be run on CreditChain, e.g. publishing or expensive cron jobs
 inputs:
@@ -23,7 +26,7 @@ runs:
       id: determine-repo
       shell: bash
       run: |
-        if [[ "${{ github.repository }}" == "ibankio/creditchain" ]]; then
+        if [[ "${{ github.repository }}" == "creditchainorg/creditchain" || "${{ github.repository }}" == "ibankio/creditchain" ]]; then
           echo "is-creditchain=true" >> $GITHUB_OUTPUT
         else
           echo "is-creditchain=false" >> $GITHUB_OUTPUT

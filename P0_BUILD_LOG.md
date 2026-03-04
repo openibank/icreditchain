@@ -41,7 +41,7 @@ Failures (all pre-existing fork artifacts, NOT introduced by us):
 | 4 | `state_key::tests::test_inner_hash_table_item` | Same |
 | 5 | `state_key::tests::test_inner_hash_module_id` | Same |
 | 6 | `account_address::test::address_hash` | Hash seed divergence |
-| 7 | `webauthn::test::test_verification_aptos_origin` | Hardcoded `aptoslabs.com` origin not updated to `libra2.org` |
+| 7 | `webauthn::test::test_verification_aptos_origin` | Hardcoded `aptoslabs.com` origin not updated to `creditchain.org` |
 | 8 | `webauthn::test::test_verification_LBT_token_origin` | Hardcoded `LBT` currency expectation |
 | 9 | `webauthn::test::test_verification_LBT_mainnet_token_origin` | Same |
 | 10 | `webauthn::test::test_verification_LBT_testnet_token_origin` | Same |
