@@ -1,0 +1,54 @@
+# iCreditChain Private Validator 2 Configuration
+base:
+  role: "validator"
+  data_dir: "/opt/icreditchain/data"
+  waypoint:
+    from_file: "/opt/icreditchain/genesis/waypoint.txt"
+
+execution:
+  genesis_file_location: "/opt/icreditchain/genesis/genesis.blob"
+  concurrency_level: 4
+
+consensus:
+  safety_rules:
+    service:
+      type: "local"
+    backend:
+      type: "on_disk_storage"
+      path: "/opt/icreditchain/data/safety-rules.db"
+      namespace: "consensus_safety_rules"
+
+validator_network:
+  discovery_method: "onchain"
+  listen_address: "/ip4/0.0.0.0/tcp/6180"
+  mutual_authentication: true
+  identity:
+    type: "from_file"
+    path: "/opt/icreditchain/genesis/validator-2/validator-identity.yaml"
+
+full_node_networks:
+  - network_id: "vfn"
+    discovery_method: "onchain"
+    listen_address: "/ip4/0.0.0.0/tcp/6181"
+    identity:
+      type: "from_file"
+      path: "/opt/icreditchain/genesis/validator-2/validator-full-node-identity.yaml"
+
+api:
+  enabled: true
+  address: "0.0.0.0:8080"
+
+storage:
+  dir: "/opt/icreditchain/data/db"
+  storage_pruner_config:
+    ledger_pruner_config:
+      enable: true
+      prune_window: 10000000
+    state_merkle_pruner_config:
+      enable: true
+      prune_window: 100000
+
+logger:
+  level: "INFO"
+  is_async: true
+  channel_size: 10000

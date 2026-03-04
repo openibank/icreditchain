@@ -1,0 +1,106 @@
+# iCreditChain Private/Consortium Deployment
+# 3-validator setup with instant finality for enterprise use.
+#
+# Usage:
+#   ./scripts/deploy.sh          # Full deployment (build + genesis + start)
+#   docker compose up -d         # Start validators (after genesis)
+#   docker compose logs -f       # Watch logs
+#   docker compose down          # Stop validators
+
+version: "3.8"
+
+x-validator-common: &validator-common
+  image: ${VALIDATOR_IMAGE:-creditchain-core/validator:from-local}
+  restart: unless-stopped
+  networks:
+    - icreditchain-private
+  depends_on:
+    genesis:
+      condition: service_completed_successfully
+
+services:
+  # Genesis initialization — runs once, creates genesis.blob + waypoint.txt
+  genesis:
+    image: ${TOOLS_IMAGE:-creditchain-core/tools:from-local}
+    container_name: icc-genesis
+    working_dir: /opt/icreditchain
+    command: bash /scripts/init-genesis.sh
+    volumes:
+      - genesis-data:/opt/icreditchain/genesis
+      - ./scripts/init-genesis.sh:/scripts/init-genesis.sh:ro
+    environment:
+      - CHAIN_ID=${CHAIN_ID:-52001}
+      - CHAIN_NAME=${CHAIN_NAME:-iCreditChain-Private}
+      - NUM_VALIDATORS=${NUM_VALIDATORS:-3}
+      - EPOCH_DURATION_SECS=${EPOCH_DURATION_SECS:-3600}
+      - STAKE_AMOUNT=${STAKE_AMOUNT:-100000000000000}
+      - MIN_STAKE=${MIN_STAKE:-100000000000000}
+      - MAX_STAKE=${MAX_STAKE:-100000000000000000}
+      - ALLOW_NEW_VALIDATORS=${ALLOW_NEW_VALIDATORS:-false}
+      - REWARDS_APY_PERCENTAGE=${REWARDS_APY_PERCENTAGE:-0}
+      - RECURRING_LOCKUP_DURATION_SECS=${RECURRING_LOCKUP_DURATION_SECS:-86400}
+    networks:
+      - icreditchain-private
+
+  # Validator 0 (primary)
+  validator0:
+    <<: *validator-common
+    container_name: icc-validator-0
+    hostname: validator0
+    volumes:
+      - genesis-data:/opt/icreditchain/genesis:ro
+      - validator0-data:/opt/icreditchain/data
+      - ./configs/validator-0.yaml:/opt/icreditchain/node.yaml:ro
+    ports:
+      - "${API_PORT_0:-8090}:8080"       # REST API
+      - "${VALIDATOR_PORT_0:-6190}:6180"  # Validator P2P
+    command: >
+      /usr/local/bin/creditchain-node
+      --config /opt/icreditchain/node.yaml
+
+  # Validator 1
+  validator1:
+    <<: *validator-common
+    container_name: icc-validator-1
+    hostname: validator1
+    volumes:
+      - genesis-data:/opt/icreditchain/genesis:ro
+      - validator1-data:/opt/icreditchain/data
+      - ./configs/validator-1.yaml:/opt/icreditchain/node.yaml:ro
+    ports:
+      - "${API_PORT_1:-8091}:8080"
+      - "${VALIDATOR_PORT_1:-6191}:6180"
+    command: >
+      /usr/local/bin/creditchain-node
+      --config /opt/icreditchain/node.yaml
+
+  # Validator 2
+  validator2:
+    <<: *validator-common
+    container_name: icc-validator-2
+    hostname: validator2
+    volumes:
+      - genesis-data:/opt/icreditchain/genesis:ro
+      - validator2-data:/opt/icreditchain/data
+      - ./configs/validator-2.yaml:/opt/icreditchain/node.yaml:ro
+    ports:
+      - "${API_PORT_2:-8092}:8080"
+      - "${VALIDATOR_PORT_2:-6192}:6180"
+    command: >
+      /usr/local/bin/creditchain-node
+      --config /opt/icreditchain/node.yaml
+
+volumes:
+  genesis-data:
+    driver: local
+  validator0-data:
+    driver: local
+  validator1-data:
+    driver: local
+  validator2-data:
+    driver: local
+
+networks:
+  icreditchain-private:
+    name: icreditchain-private
+    driver: bridge
